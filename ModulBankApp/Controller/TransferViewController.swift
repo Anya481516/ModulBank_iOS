@@ -17,6 +17,7 @@ class TransferViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var sumLabel: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var makeTransferButton: UIButton!
     
     var accounts = [Int64]()
        var balances = [Int]()
@@ -42,6 +43,8 @@ class TransferViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //MARK:- IBActions:
     @IBAction func makeTransferButtonPressed(_ sender: UIButton) {
+    }
+    @IBAction func saveSampleButtonPressed(_ sender: Any) {
     }
     
     //MARK:- METHODS:

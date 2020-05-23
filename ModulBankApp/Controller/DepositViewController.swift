@@ -16,6 +16,7 @@ class DepositViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var sumTextFiewld: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var makeDepositButton: UIButton!
     
     var accounts = [Int64]()
     var balances = [Int]()
@@ -41,6 +42,8 @@ class DepositViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     //MARK:- IBActions:
     @IBAction func makeDepositButtonPressed(_ sender: UIButton) {
+    }
+    @IBAction func saveSampleButtonPressed(_ sender: Any) {
     }
     
     //MARK:- METHODS:

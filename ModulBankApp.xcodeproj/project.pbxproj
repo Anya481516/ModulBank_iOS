@@ -18,6 +18,7 @@
 		5D301EFA24795468004472CF /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF924795468004472CF /* EditProfileViewController.swift */; };
 		5D301F04247975D1004472CF /* Sample2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D301F03247975D1004472CF /* Sample2Cell.xib */; };
 		5D301F062479760F004472CF /* CustomSapmle2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F052479760F004472CF /* CustomSapmle2Cell.swift */; };
+		5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F072479808F004472CF /* ChooseSampleViewController.swift */; };
 		5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5922477D555003A4AF1 /* AppDelegate.swift */; };
 		5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */; };
 		5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5962477D555003A4AF1 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		5D301EF924795468004472CF /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		5D301F03247975D1004472CF /* Sample2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sample2Cell.xib; sourceTree = "<group>"; };
 		5D301F052479760F004472CF /* CustomSapmle2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSapmle2Cell.swift; sourceTree = "<group>"; };
+		5D301F072479808F004472CF /* ChooseSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSampleViewController.swift; sourceTree = "<group>"; };
 		5DC3F58F2477D555003A4AF1 /* ModulBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC3F5922477D555003A4AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				5D301EF324794365004472CF /* InvoiceTableViewController.swift */,
 				5D301EF524794399004472CF /* SampleViewController.swift */,
 				5D301EF924795468004472CF /* EditProfileViewController.swift */,
+				5D301F072479808F004472CF /* ChooseSampleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */,
 				5DC3F5B124780707003A4AF1 /* HomeViewController.swift in Sources */,
 				5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */,
+				5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */,
 				5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */,
 				5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */,
 				5DC3F5AF247806F5003A4AF1 /* Account.swift in Sources */,

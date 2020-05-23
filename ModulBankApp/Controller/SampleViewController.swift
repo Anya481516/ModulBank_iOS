@@ -19,6 +19,7 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "Sample2Cell", bundle: nil), forCellReuseIdentifier: "customSample2Cell")

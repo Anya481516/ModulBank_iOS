@@ -17,6 +17,7 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var sumLabel: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var makePaymentButton: UIButton!
     
     var accounts = [Int64]()
        var balances = [Int]()
@@ -42,6 +43,9 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     //MARK:- IBActions:
     @IBAction func makePayButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func saveSampleButtonPressed(_ sender: Any) {
     }
     
     //MARK:- METHODS:
