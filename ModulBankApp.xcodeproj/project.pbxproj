@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D301EEA24793CFA004472CF /* InvoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D301EE924793CFA004472CF /* InvoiceCell.xib */; };
+		5D301EEC247942F9004472CF /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EEB247942F9004472CF /* DepositViewController.swift */; };
+		5D301EEE24794314004472CF /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EED24794314004472CF /* TransferViewController.swift */; };
+		5D301EF024794327004472CF /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EEF24794327004472CF /* PayViewController.swift */; };
+		5D301EF22479434D004472CF /* InvoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF12479434D004472CF /* InvoiceViewController.swift */; };
+		5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF324794365004472CF /* InvoiceTableViewController.swift */; };
+		5D301EF624794399004472CF /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF524794399004472CF /* SampleViewController.swift */; };
+		5D301EF8247943F9004472CF /* CustomInvoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF7247943F9004472CF /* CustomInvoiceCell.swift */; };
+		5D301EFA24795468004472CF /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301EF924795468004472CF /* EditProfileViewController.swift */; };
+		5D301F04247975D1004472CF /* Sample2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D301F03247975D1004472CF /* Sample2Cell.xib */; };
+		5D301F062479760F004472CF /* CustomSapmle2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F052479760F004472CF /* CustomSapmle2Cell.swift */; };
 		5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5922477D555003A4AF1 /* AppDelegate.swift */; };
 		5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */; };
 		5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5962477D555003A4AF1 /* ViewController.swift */; };
@@ -14,9 +25,27 @@
 		5DC3F59D2477D555003A4AF1 /* ModulBankApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F59B2477D555003A4AF1 /* ModulBankApp.xcdatamodeld */; };
 		5DC3F59F2477D558003A4AF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DC3F59E2477D558003A4AF1 /* Assets.xcassets */; };
 		5DC3F5A22477D558003A4AF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC3F5A02477D558003A4AF1 /* LaunchScreen.storyboard */; };
+		5DC3F5AD247806E5003A4AF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5AC247806E5003A4AF1 /* User.swift */; };
+		5DC3F5AF247806F5003A4AF1 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5AE247806F5003A4AF1 /* Account.swift */; };
+		5DC3F5B124780707003A4AF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B024780707003A4AF1 /* HomeViewController.swift */; };
+		5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B224780724003A4AF1 /* AcountViewController.swift */; };
+		5DC3F5B52478073F003A4AF1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */; };
+		5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B624780750003A4AF1 /* LoginViewController.swift */; };
+		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D301EE924793CFA004472CF /* InvoiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceCell.xib; sourceTree = "<group>"; };
+		5D301EEB247942F9004472CF /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+		5D301EED24794314004472CF /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		5D301EEF24794327004472CF /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		5D301EF12479434D004472CF /* InvoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceViewController.swift; sourceTree = "<group>"; };
+		5D301EF324794365004472CF /* InvoiceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceTableViewController.swift; sourceTree = "<group>"; };
+		5D301EF524794399004472CF /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		5D301EF7247943F9004472CF /* CustomInvoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInvoiceCell.swift; sourceTree = "<group>"; };
+		5D301EF924795468004472CF /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		5D301F03247975D1004472CF /* Sample2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sample2Cell.xib; sourceTree = "<group>"; };
+		5D301F052479760F004472CF /* CustomSapmle2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSapmle2Cell.swift; sourceTree = "<group>"; };
 		5DC3F58F2477D555003A4AF1 /* ModulBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC3F5922477D555003A4AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +55,13 @@
 		5DC3F59E2477D558003A4AF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DC3F5A12477D558003A4AF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5DC3F5A32477D558003A4AF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DC3F5AC247806E5003A4AF1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5DC3F5AE247806F5003A4AF1 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		5DC3F5B024780707003A4AF1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5DC3F5B224780724003A4AF1 /* AcountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountViewController.swift; sourceTree = "<group>"; };
+		5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		5DC3F5B624780750003A4AF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +94,58 @@
 		5DC3F5912477D555003A4AF1 /* ModulBankApp */ = {
 			isa = PBXGroup;
 			children = (
+				5DC3F5AB2478069C003A4AF1 /* Controller */,
+				5DC3F5AA24780694003A4AF1 /* Model */,
+				5DC3F5A924780687003A4AF1 /* View */,
 				5DC3F5922477D555003A4AF1 /* AppDelegate.swift */,
 				5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */,
-				5DC3F5962477D555003A4AF1 /* ViewController.swift */,
-				5DC3F5982477D555003A4AF1 /* Main.storyboard */,
-				5DC3F59E2477D558003A4AF1 /* Assets.xcassets */,
-				5DC3F5A02477D558003A4AF1 /* LaunchScreen.storyboard */,
 				5DC3F5A32477D558003A4AF1 /* Info.plist */,
 				5DC3F59B2477D555003A4AF1 /* ModulBankApp.xcdatamodeld */,
 			);
 			path = ModulBankApp;
+			sourceTree = "<group>";
+		};
+		5DC3F5A924780687003A4AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DC3F5A02477D558003A4AF1 /* LaunchScreen.storyboard */,
+				5DC3F59E2477D558003A4AF1 /* Assets.xcassets */,
+				5DC3F5982477D555003A4AF1 /* Main.storyboard */,
+				5D301EE924793CFA004472CF /* InvoiceCell.xib */,
+				5D301F03247975D1004472CF /* Sample2Cell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DC3F5AA24780694003A4AF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5DC3F5AC247806E5003A4AF1 /* User.swift */,
+				5DC3F5AE247806F5003A4AF1 /* Account.swift */,
+				5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */,
+				5D301EF7247943F9004472CF /* CustomInvoiceCell.swift */,
+				5D301F052479760F004472CF /* CustomSapmle2Cell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5DC3F5AB2478069C003A4AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5DC3F5962477D555003A4AF1 /* ViewController.swift */,
+				5DC3F5B024780707003A4AF1 /* HomeViewController.swift */,
+				5DC3F5B224780724003A4AF1 /* AcountViewController.swift */,
+				5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */,
+				5DC3F5B624780750003A4AF1 /* LoginViewController.swift */,
+				5D301EEB247942F9004472CF /* DepositViewController.swift */,
+				5D301EED24794314004472CF /* TransferViewController.swift */,
+				5D301EEF24794327004472CF /* PayViewController.swift */,
+				5D301EF12479434D004472CF /* InvoiceViewController.swift */,
+				5D301EF324794365004472CF /* InvoiceTableViewController.swift */,
+				5D301EF524794399004472CF /* SampleViewController.swift */,
+				5D301EF924795468004472CF /* EditProfileViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,6 +207,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DC3F5A22477D558003A4AF1 /* LaunchScreen.storyboard in Resources */,
+				5D301F04247975D1004472CF /* Sample2Cell.xib in Resources */,
+				5D301EEA24793CFA004472CF /* InvoiceCell.xib in Resources */,
 				5DC3F59F2477D558003A4AF1 /* Assets.xcassets in Resources */,
 				5DC3F59A2477D555003A4AF1 /* Main.storyboard in Resources */,
 			);
@@ -141,10 +221,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D301EEE24794314004472CF /* TransferViewController.swift in Sources */,
+				5D301EF024794327004472CF /* PayViewController.swift in Sources */,
+				5DC3F5B52478073F003A4AF1 /* SignupViewController.swift in Sources */,
+				5D301EEC247942F9004472CF /* DepositViewController.swift in Sources */,
+				5D301EF624794399004472CF /* SampleViewController.swift in Sources */,
 				5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */,
+				5D301EF8247943F9004472CF /* CustomInvoiceCell.swift in Sources */,
+				5D301EFA24795468004472CF /* EditProfileViewController.swift in Sources */,
 				5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */,
+				5D301F062479760F004472CF /* CustomSapmle2Cell.swift in Sources */,
 				5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */,
+				5DC3F5AD247806E5003A4AF1 /* User.swift in Sources */,
+				5D301EF22479434D004472CF /* InvoiceViewController.swift in Sources */,
 				5DC3F59D2477D555003A4AF1 /* ModulBankApp.xcdatamodeld in Sources */,
+				5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */,
+				5DC3F5B124780707003A4AF1 /* HomeViewController.swift in Sources */,
+				5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */,
+				5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */,
+				5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */,
+				5DC3F5AF247806F5003A4AF1 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +394,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annamelkhova.ModulBankApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -316,7 +412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.annamelkhova.ModulBankApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
