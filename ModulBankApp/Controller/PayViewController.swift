@@ -14,7 +14,7 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var accountPicker: UIPickerView!
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var placeToLabel: UITextField!
-    @IBOutlet weak var sumLabel: UITextField!
+    @IBOutlet weak var sumTextField: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton!
@@ -37,6 +37,7 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
+        self.sumTextField.keyboardType = UIKeyboardType.numberPad
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }

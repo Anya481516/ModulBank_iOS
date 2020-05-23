@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		5D301F04247975D1004472CF /* Sample2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D301F03247975D1004472CF /* Sample2Cell.xib */; };
 		5D301F062479760F004472CF /* CustomSapmle2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F052479760F004472CF /* CustomSapmle2Cell.swift */; };
 		5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F072479808F004472CF /* ChooseSampleViewController.swift */; };
+		5D301F0A24798468004472CF /* OpenNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F0924798468004472CF /* OpenNewAccountViewController.swift */; };
 		5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5922477D555003A4AF1 /* AppDelegate.swift */; };
 		5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */; };
 		5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5962477D555003A4AF1 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		5DC3F5B52478073F003A4AF1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */; };
 		5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B624780750003A4AF1 /* LoginViewController.swift */; };
 		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
+		9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,7 @@
 		5D301F03247975D1004472CF /* Sample2Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Sample2Cell.xib; sourceTree = "<group>"; };
 		5D301F052479760F004472CF /* CustomSapmle2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSapmle2Cell.swift; sourceTree = "<group>"; };
 		5D301F072479808F004472CF /* ChooseSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSampleViewController.swift; sourceTree = "<group>"; };
+		5D301F0924798468004472CF /* OpenNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNewAccountViewController.swift; sourceTree = "<group>"; };
 		5DC3F58F2477D555003A4AF1 /* ModulBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC3F5922477D555003A4AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +67,9 @@
 		5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		5DC3F5B624780750003A4AF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
+		632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.debug.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B02D29B4FAAC59AF8B335EE5 /* Pods-ModulBankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.release.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.release.xcconfig"; sourceTree = "<group>"; };
+		C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModulBankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,17 +77,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5353869AF9378A024B5706DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */,
+				B02D29B4FAAC59AF8B335EE5 /* Pods-ModulBankApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5DC3F5862477D555003A4AF1 = {
 			isa = PBXGroup;
 			children = (
 				5DC3F5912477D555003A4AF1 /* ModulBankApp */,
 				5DC3F5902477D555003A4AF1 /* Products */,
+				5353869AF9378A024B5706DA /* Pods */,
+				CA59CC2BCD81A205BBF29540 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,8 +165,17 @@
 				5D301EF524794399004472CF /* SampleViewController.swift */,
 				5D301EF924795468004472CF /* EditProfileViewController.swift */,
 				5D301F072479808F004472CF /* ChooseSampleViewController.swift */,
+				5D301F0924798468004472CF /* OpenNewAccountViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		CA59CC2BCD81A205BBF29540 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DC3F5A62477D558003A4AF1 /* Build configuration list for PBXNativeTarget "ModulBankApp" */;
 			buildPhases = (
+				1A272A49504445607B976E8B /* [CP] Check Pods Manifest.lock */,
 				5DC3F58B2477D555003A4AF1 /* Sources */,
 				5DC3F58C2477D555003A4AF1 /* Frameworks */,
 				5DC3F58D2477D555003A4AF1 /* Resources */,
+				57928492F25C78A7D65BB6C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,6 +248,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1A272A49504445607B976E8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ModulBankApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57928492F25C78A7D65BB6C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5DC3F58B2477D555003A4AF1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -237,6 +308,7 @@
 				5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */,
 				5DC3F5AD247806E5003A4AF1 /* User.swift in Sources */,
 				5D301EF22479434D004472CF /* InvoiceViewController.swift in Sources */,
+				5D301F0A24798468004472CF /* OpenNewAccountViewController.swift in Sources */,
 				5DC3F59D2477D555003A4AF1 /* ModulBankApp.xcdatamodeld in Sources */,
 				5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */,
 				5DC3F5B124780707003A4AF1 /* HomeViewController.swift in Sources */,
@@ -386,6 +458,7 @@
 		};
 		5DC3F5A72477D558003A4AF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,6 +477,7 @@
 		};
 		5DC3F5A82477D558003A4AF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B02D29B4FAAC59AF8B335EE5 /* Pods-ModulBankApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

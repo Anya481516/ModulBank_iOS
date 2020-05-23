@@ -298,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEy-4P-0KU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="969"/>
+            <point key="canvasLocation" x="-12" y="826"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="lzQ-FL-xwI">
@@ -492,6 +492,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="openNewAccountButtonPressed:" destination="uf5-1c-IXW" eventType="touchUpInside" id="CcC-Uo-8Te"/>
+                                                    <segue destination="ugv-g1-5wL" kind="show" identifier="fromAccInfoToOpenNewAcc" id="THa-QR-b9h"/>
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayJ-c6-m4L" userLabel="Space View">
@@ -927,7 +928,7 @@
                         <outlet property="mainView" destination="6ls-TX-eGr" id="JqQ-pp-7cI"/>
                         <outlet property="makeTransferButton" destination="eEt-3h-aa9" id="jKO-Vs-Kmy"/>
                         <outlet property="newBalanceLabel" destination="AGQ-B6-4nb" id="OGP-Eu-xPu"/>
-                        <outlet property="sumLabel" destination="1D8-72-W4u" id="yrh-kt-H6e"/>
+                        <outlet property="sumTextField" destination="1D8-72-W4u" id="yrh-kt-H6e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrY-OG-V4P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1135,7 +1136,7 @@
                         <outlet property="makePaymentButton" destination="YRD-vu-Ufc" id="blC-3I-G3V"/>
                         <outlet property="newBalanceLabel" destination="PmC-dQ-bDt" id="KV1-W6-ZWO"/>
                         <outlet property="placeToLabel" destination="U3C-ni-xe7" id="IkU-8I-lJu"/>
-                        <outlet property="sumLabel" destination="b3C-tP-lf8" id="2Cf-Nh-gza"/>
+                        <outlet property="sumTextField" destination="b3C-tP-lf8" id="2Cf-Nh-gza"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8J-yt-xOw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1988,11 +1989,129 @@
             </objects>
             <point key="canvasLocation" x="4756" y="1128"/>
         </scene>
+        <!--Open New Account View Controller-->
+        <scene sceneID="R3Q-sr-xnZ">
+            <objects>
+                <viewController id="ugv-g1-5wL" userLabel="Open New Account View Controller" customClass="OpenNewAccountViewController" customModule="ModulBankApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WlE-sV-aGK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5T-Pc-tK6" userLabel="Up View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Новый счет" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqn-ks-wVe">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="TitleColor"/>
+                                <constraints>
+                                    <constraint firstItem="Mqn-ks-wVe" firstAttribute="top" secondItem="S5T-Pc-tK6" secondAttribute="top" id="12y-yw-nco"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mqn-ks-wVe" secondAttribute="bottom" id="3m8-D8-mrB"/>
+                                    <constraint firstAttribute="height" constant="50" id="YxU-ez-y4L"/>
+                                    <constraint firstItem="Mqn-ks-wVe" firstAttribute="leading" secondItem="S5T-Pc-tK6" secondAttribute="leading" id="b6R-F2-daY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mqn-ks-wVe" secondAttribute="trailing" id="h4s-pp-XZm"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jhf-mL-bBx">
+                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qiC-qF-Fsg" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="208"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите баланс нового счета:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07W-iw-eKd">
+                                                <rect key="frame" x="16" y="30" width="343" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите баланс" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7c-WL-zuo" userLabel="Sum Text Field">
+                                                <rect key="frame" x="16" y="74" width="343" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQS-rl-izF" userLabel="Open new account Button">
+                                                <rect key="frame" x="16" y="138" width="343" height="30"/>
+                                                <color key="backgroundColor" name="ButtonColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="d5V-QU-Thv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Открыть счет"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="openNewAccountButtonPressed:" destination="ugv-g1-5wL" eventType="touchUpInside" id="Ac9-3E-iHy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="T7c-WL-zuo" firstAttribute="leading" secondItem="qiC-qF-Fsg" secondAttribute="leading" constant="16" id="F30-ck-RhD"/>
+                                            <constraint firstAttribute="trailing" secondItem="07W-iw-eKd" secondAttribute="trailing" constant="16" id="FGi-Yn-DTv"/>
+                                            <constraint firstItem="XQS-rl-izF" firstAttribute="leading" secondItem="qiC-qF-Fsg" secondAttribute="leading" constant="16" id="Jsv-Tx-q3a"/>
+                                            <constraint firstAttribute="trailing" secondItem="XQS-rl-izF" secondAttribute="trailing" constant="16" id="KJZ-Ec-aCJ"/>
+                                            <constraint firstItem="07W-iw-eKd" firstAttribute="leading" secondItem="qiC-qF-Fsg" secondAttribute="leading" constant="16" id="iV6-FN-Fi8"/>
+                                            <constraint firstItem="T7c-WL-zuo" firstAttribute="top" secondItem="07W-iw-eKd" secondAttribute="bottom" constant="20" id="nni-xU-DlB"/>
+                                            <constraint firstItem="07W-iw-eKd" firstAttribute="top" secondItem="qiC-qF-Fsg" secondAttribute="top" constant="30" id="oRk-ep-KVp"/>
+                                            <constraint firstItem="XQS-rl-izF" firstAttribute="top" secondItem="T7c-WL-zuo" secondAttribute="bottom" constant="30" id="qu4-4x-WS2"/>
+                                            <constraint firstAttribute="height" constant="208" id="tnH-L2-Psm"/>
+                                            <constraint firstAttribute="trailing" secondItem="T7c-WL-zuo" secondAttribute="trailing" constant="16" id="waB-kw-Nkd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qiC-qF-Fsg" firstAttribute="trailing" secondItem="IYA-XS-eR5" secondAttribute="trailing" id="IYF-Jn-xs9"/>
+                                    <constraint firstItem="qiC-qF-Fsg" firstAttribute="width" secondItem="p0c-gJ-ct3" secondAttribute="width" id="bA4-lE-BS3"/>
+                                    <constraint firstItem="qiC-qF-Fsg" firstAttribute="top" secondItem="IYA-XS-eR5" secondAttribute="top" id="bLA-Jj-ZDT"/>
+                                    <constraint firstItem="qiC-qF-Fsg" firstAttribute="bottom" secondItem="IYA-XS-eR5" secondAttribute="bottom" id="oiJ-kK-k6n"/>
+                                    <constraint firstItem="qiC-qF-Fsg" firstAttribute="leading" secondItem="IYA-XS-eR5" secondAttribute="leading" id="pZR-6O-z4O"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="IYA-XS-eR5"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="p0c-gJ-ct3"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" name="ScreenColor"/>
+                        <constraints>
+                            <constraint firstItem="S5T-Pc-tK6" firstAttribute="top" secondItem="jXC-wx-20w" secondAttribute="top" id="2Xf-rF-F4b"/>
+                            <constraint firstItem="S5T-Pc-tK6" firstAttribute="trailing" secondItem="jXC-wx-20w" secondAttribute="trailing" id="2p6-dz-WMv"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="trailing" secondItem="jXC-wx-20w" secondAttribute="trailing" id="6XT-jW-wfp"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="trailing" secondItem="jXC-wx-20w" secondAttribute="trailing" id="7fB-cm-2h5"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="bottom" secondItem="jXC-wx-20w" secondAttribute="bottom" id="7vl-Rh-BY1"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="bottom" secondItem="jXC-wx-20w" secondAttribute="bottom" id="GAe-7c-W54"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="top" secondItem="S5T-Pc-tK6" secondAttribute="bottom" id="ihP-vi-L7W"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="top" secondItem="S5T-Pc-tK6" secondAttribute="bottom" id="n4B-xa-Ifw"/>
+                            <constraint firstItem="S5T-Pc-tK6" firstAttribute="leading" secondItem="jXC-wx-20w" secondAttribute="leading" id="qoe-xj-fA7"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="leading" secondItem="jXC-wx-20w" secondAttribute="leading" id="rbN-Rn-Wvz"/>
+                            <constraint firstItem="Jhf-mL-bBx" firstAttribute="leading" secondItem="jXC-wx-20w" secondAttribute="leading" id="xQO-wc-n0G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jXC-wx-20w"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Счета" image="dollarsign.square" catalog="system" id="STr-1p-3Ed">
+                        <color key="badgeColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="MMt-Em-mXg"/>
+                    <connections>
+                        <outlet property="balanceTextFiewl" destination="T7c-WL-zuo" id="usK-aQ-cE6"/>
+                        <outlet property="mainView" destination="WlE-sV-aGK" id="6tb-Da-hh9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tav-j2-KTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="1207"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fs7-y4-S14"/>
-        <segue reference="gQ9-bd-lOD"/>
-        <segue reference="6Fm-u8-2xS"/>
+        <segue reference="0kH-lO-OFT"/>
+        <segue reference="3d1-b4-9Pc"/>
+        <segue reference="UDg-Um-1iz"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ProfilePic" width="640" height="640"/>
