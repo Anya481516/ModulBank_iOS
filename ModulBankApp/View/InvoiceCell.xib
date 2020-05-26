@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,113 +16,101 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifc-H5-BWF" userLabel="Date View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
+                        <rect key="frame" x="212.5" y="37.5" width="107.5" height="37.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-x0-6d0">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd-MMM hh:mm:ss" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqh-x0-6d0">
+                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="37.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="InvoiceCellColor2"/>
                         <constraints>
-                            <constraint firstItem="Qqh-x0-6d0" firstAttribute="leading" secondItem="Ifc-H5-BWF" secondAttribute="leading" id="1B1-qG-TTv"/>
-                            <constraint firstItem="Qqh-x0-6d0" firstAttribute="top" secondItem="Ifc-H5-BWF" secondAttribute="top" id="F54-Ne-MJc"/>
-                            <constraint firstAttribute="bottom" secondItem="Qqh-x0-6d0" secondAttribute="bottom" id="HDb-7m-JLe"/>
-                            <constraint firstAttribute="trailing" secondItem="Qqh-x0-6d0" secondAttribute="trailing" id="LAL-AF-jgG"/>
-                            <constraint firstAttribute="height" constant="20" id="oRJ-vy-Dr0"/>
+                            <constraint firstAttribute="trailing" secondItem="Qqh-x0-6d0" secondAttribute="trailing" constant="5" id="U4r-wl-oFR"/>
+                            <constraint firstItem="Qqh-x0-6d0" firstAttribute="leading" secondItem="Ifc-H5-BWF" secondAttribute="leading" id="lSb-Ou-X7t"/>
+                            <constraint firstItem="Qqh-x0-6d0" firstAttribute="top" secondItem="Ifc-H5-BWF" secondAttribute="top" id="sjK-YY-sVN"/>
+                            <constraint firstAttribute="bottom" secondItem="Qqh-x0-6d0" secondAttribute="bottom" id="v1t-tm-CMb"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-VR-Ix2" userLabel="Operation View">
-                        <rect key="frame" x="0.0" y="20" width="106.5" height="55"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePf-VR-Ix2" userLabel="Title View">
+                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="37.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Операция" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im1-GO-UAN">
-                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название платежа" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im1-GO-UAN" userLabel="Title Label">
+                                <rect key="frame" x="5" y="0.0" width="208.5" height="37.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="InvoiceCellColor1"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Im1-GO-UAN" secondAttribute="trailing" id="eOj-CB-c8X"/>
-                            <constraint firstItem="Im1-GO-UAN" firstAttribute="leading" secondItem="ePf-VR-Ix2" secondAttribute="leading" id="iNj-lj-1lE"/>
-                            <constraint firstItem="Im1-GO-UAN" firstAttribute="top" secondItem="ePf-VR-Ix2" secondAttribute="top" id="pXE-6w-KDP"/>
-                            <constraint firstAttribute="bottom" secondItem="Im1-GO-UAN" secondAttribute="bottom" id="xl8-o5-71v"/>
+                            <constraint firstAttribute="trailing" secondItem="Im1-GO-UAN" secondAttribute="trailing" id="64z-ea-gX4"/>
+                            <constraint firstItem="Im1-GO-UAN" firstAttribute="top" secondItem="ePf-VR-Ix2" secondAttribute="top" id="FLh-ZK-BDW"/>
+                            <constraint firstItem="Im1-GO-UAN" firstAttribute="leading" secondItem="ePf-VR-Ix2" secondAttribute="leading" constant="5" id="PtI-8e-3DU"/>
+                            <constraint firstAttribute="bottom" secondItem="Im1-GO-UAN" secondAttribute="bottom" id="wee-VC-0dV"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jwr-lp-DJU" userLabel="Sum View">
-                        <rect key="frame" x="106.5" y="20" width="107" height="55"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-kl-3dZ" userLabel="Sum View">
+                        <rect key="frame" x="213.5" y="0.0" width="106.5" height="37.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назначение" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGT-K0-HcK">
-                                <rect key="frame" x="0.0" y="0.0" width="107" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrA-ds-YWH">
+                                <rect key="frame" x="0.0" y="0.0" width="101.5" height="37.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="InvoiceCellColor1"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PrA-ds-YWH" secondAttribute="trailing" constant="5" id="Enq-rV-F9E"/>
+                            <constraint firstItem="PrA-ds-YWH" firstAttribute="leading" secondItem="Neh-kl-3dZ" secondAttribute="leading" id="ULX-sY-PLr"/>
+                            <constraint firstItem="PrA-ds-YWH" firstAttribute="top" secondItem="Neh-kl-3dZ" secondAttribute="top" id="XCe-Oq-Ieb"/>
+                            <constraint firstAttribute="bottom" secondItem="PrA-ds-YWH" secondAttribute="bottom" id="dNH-Wg-fI4"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jwr-lp-DJU" userLabel="Email View">
+                        <rect key="frame" x="0.0" y="37.5" width="212.5" height="37.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email на кого платеж" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGT-K0-HcK" userLabel="Email Label">
+                                <rect key="frame" x="5" y="0.0" width="207.5" height="37.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rGT-K0-HcK" secondAttribute="trailing" id="gWc-4X-TKG"/>
                             <constraint firstItem="rGT-K0-HcK" firstAttribute="top" secondItem="Jwr-lp-DJU" secondAttribute="top" id="ho0-hr-nu0"/>
-                            <constraint firstItem="rGT-K0-HcK" firstAttribute="leading" secondItem="Jwr-lp-DJU" secondAttribute="leading" id="yts-PJ-Cqx"/>
+                            <constraint firstItem="rGT-K0-HcK" firstAttribute="leading" secondItem="Jwr-lp-DJU" secondAttribute="leading" constant="5" id="yts-PJ-Cqx"/>
                             <constraint firstAttribute="bottom" secondItem="rGT-K0-HcK" secondAttribute="bottom" id="zyD-PU-1J9"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-kl-3dZ" userLabel="Balance View">
-                        <rect key="frame" x="213.5" y="20" width="106.5" height="55"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrA-ds-YWH">
-                                <rect key="frame" x="0.0" y="0.0" width="106.5" height="55"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" name="InvoiceCellColor1"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PrA-ds-YWH" secondAttribute="trailing" id="CaW-5M-6G8"/>
-                            <constraint firstItem="PrA-ds-YWH" firstAttribute="top" secondItem="Neh-kl-3dZ" secondAttribute="top" id="ElG-cv-sXm"/>
-                            <constraint firstItem="PrA-ds-YWH" firstAttribute="leading" secondItem="Neh-kl-3dZ" secondAttribute="leading" id="WC6-b4-kym"/>
-                            <constraint firstAttribute="bottom" secondItem="PrA-ds-YWH" secondAttribute="bottom" id="jik-1v-pW4"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="top" secondItem="Ifc-H5-BWF" secondAttribute="bottom" id="3xE-Fe-5h2"/>
-                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="top" secondItem="E78-No-9yy" secondAttribute="top" id="6NA-q1-a8S"/>
-                    <constraint firstItem="ePf-VR-Ix2" firstAttribute="top" secondItem="Ifc-H5-BWF" secondAttribute="bottom" id="9jL-fW-y7t"/>
-                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="leading" secondItem="E78-No-9yy" secondAttribute="leading" id="EDf-Cd-faL"/>
-                    <constraint firstAttribute="trailing" secondItem="Ifc-H5-BWF" secondAttribute="trailing" id="Ezv-T2-Gln"/>
-                    <constraint firstAttribute="bottom" secondItem="Jwr-lp-DJU" secondAttribute="bottom" id="FF8-hy-1i9"/>
-                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="width" secondItem="ePf-VR-Ix2" secondAttribute="width" id="NkC-JY-cWs"/>
-                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="top" secondItem="Ifc-H5-BWF" secondAttribute="bottom" id="QaW-71-c7R"/>
-                    <constraint firstAttribute="bottom" secondItem="Neh-kl-3dZ" secondAttribute="bottom" id="RCh-g3-AGO"/>
-                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="leading" secondItem="Jwr-lp-DJU" secondAttribute="trailing" id="c0W-wT-48c"/>
-                    <constraint firstItem="ePf-VR-Ix2" firstAttribute="leading" secondItem="E78-No-9yy" secondAttribute="leading" id="d3J-X7-uqc"/>
-                    <constraint firstAttribute="trailing" secondItem="Neh-kl-3dZ" secondAttribute="trailing" id="gOK-G5-LEd"/>
-                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="width" secondItem="ePf-VR-Ix2" secondAttribute="width" id="khN-rr-7a9"/>
-                    <constraint firstAttribute="bottom" secondItem="ePf-VR-Ix2" secondAttribute="bottom" id="nin-6h-GOI"/>
-                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="leading" secondItem="ePf-VR-Ix2" secondAttribute="trailing" id="xUp-LY-8fs"/>
+                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="leading" secondItem="E78-No-9yy" secondAttribute="leading" id="7T4-oA-Ltm"/>
+                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="height" secondItem="ePf-VR-Ix2" secondAttribute="height" id="94X-ht-jes"/>
+                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="top" secondItem="Neh-kl-3dZ" secondAttribute="bottom" id="Gj8-mL-gZP"/>
+                    <constraint firstItem="ePf-VR-Ix2" firstAttribute="top" secondItem="E78-No-9yy" secondAttribute="top" id="OL7-jM-jE6"/>
+                    <constraint firstItem="Jwr-lp-DJU" firstAttribute="top" secondItem="ePf-VR-Ix2" secondAttribute="bottom" id="Rne-VF-v93"/>
+                    <constraint firstAttribute="trailing" secondItem="Neh-kl-3dZ" secondAttribute="trailing" id="TOS-vi-ggZ"/>
+                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="leading" secondItem="Jwr-lp-DJU" secondAttribute="trailing" id="VHe-a5-zwE"/>
+                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="top" secondItem="E78-No-9yy" secondAttribute="top" id="YV9-zo-ut6"/>
+                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="height" secondItem="Neh-kl-3dZ" secondAttribute="height" id="aHO-2V-ECY"/>
+                    <constraint firstAttribute="bottom" secondItem="Jwr-lp-DJU" secondAttribute="bottom" id="g30-hO-swf"/>
+                    <constraint firstItem="ePf-VR-Ix2" firstAttribute="leading" secondItem="E78-No-9yy" secondAttribute="leading" id="jxB-bH-1QY"/>
+                    <constraint firstAttribute="bottom" secondItem="Ifc-H5-BWF" secondAttribute="bottom" id="myx-eJ-EZp"/>
+                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="width" secondItem="ePf-VR-Ix2" secondAttribute="width" multiplier="1:2" id="nrd-md-swW"/>
+                    <constraint firstAttribute="trailing" secondItem="Ifc-H5-BWF" secondAttribute="trailing" id="oCq-PE-s8x"/>
+                    <constraint firstItem="Ifc-H5-BWF" firstAttribute="width" secondItem="Jwr-lp-DJU" secondAttribute="width" multiplier="1:2" constant="1" id="sEo-42-lWV"/>
+                    <constraint firstItem="Neh-kl-3dZ" firstAttribute="leading" secondItem="ePf-VR-Ix2" secondAttribute="trailing" id="wZ5-gF-ju3"/>
                 </constraints>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration" identifier="customInvoiceCell"/>
             <connections>
                 <outlet property="dateLabel" destination="Qqh-x0-6d0" id="ZL5-kk-fem"/>
-                <outlet property="operationLabel" destination="Im1-GO-UAN" id="8R7-15-u6v"/>
-                <outlet property="receiverLabel" destination="rGT-K0-HcK" id="UGb-HX-mKj"/>
+                <outlet property="emailLabel" destination="rGT-K0-HcK" id="UGb-HX-mKj"/>
                 <outlet property="sumLabel" destination="PrA-ds-YWH" id="tba-Qx-lda"/>
+                <outlet property="titleLabel" destination="Im1-GO-UAN" id="8R7-15-u6v"/>
             </connections>
             <point key="canvasLocation" x="437.68115942028987" y="379.35267857142856"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <namedColor name="InvoiceCellColor1">
-            <color red="0.92100000381469727" green="0.92100000381469727" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="InvoiceCellColor2">
-            <color red="0.75400000810623169" green="0.75400000810623169" blue="0.75400000810623169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

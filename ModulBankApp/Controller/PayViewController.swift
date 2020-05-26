@@ -8,11 +8,9 @@
 
 import UIKit
 
-class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PayViewController: UIViewController {
 
     //MARK:- IBOutlets:
-    @IBOutlet weak var accountPicker: UIPickerView!
-    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var placeToLabel: UITextField!
     @IBOutlet weak var sumTextField: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
@@ -30,10 +28,6 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         accounts = [4000000000, 4000000001, 4000000002]
         balances = [2013, 1230, 20404]
         
-        self.accountPicker.delegate = self
-        self.accountPicker.dataSource = self
-        
-        balanceLabel.text = String(balances[0])
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -50,21 +44,6 @@ class PayViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     //MARK:- METHODS:
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return accounts.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(accounts[row])
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //
-        balanceLabel.text = String(balances[pickerView.selectedRow(inComponent: 0)])
-    }
     
     // with the keyboard
     @objc func outOfKeyBoardTapped(){

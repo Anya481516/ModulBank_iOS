@@ -22,13 +22,11 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "Sample2Cell", bundle: nil), forCellReuseIdentifier: "customSample2Cell")
+        tableView.register(UINib(nibName: "ExampleCell", bundle: nil), forCellReuseIdentifier: "customExampleCell")
         self.configureTableView()
     }
     
     //MARK:- IBActions:
-    @IBAction func createButtonPressed(_ sender: Any) {
-    }
     
     //MARK:- METHODS:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,7 +34,7 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customSample2Cell", for: indexPath) as! CustomSample2Cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customExampleCell", for: indexPath) as! CustomExampleCell
         return cell
     }
     

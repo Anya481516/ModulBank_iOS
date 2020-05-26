@@ -8,11 +8,9 @@
 
 import UIKit
 
-class TransferViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class TransferViewController: UIViewController {
 
     //MARK:- IBOutlets
-    @IBOutlet weak var accountPicker: UIPickerView!
-    @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var accountToLabel: UITextField!
     @IBOutlet weak var sumTextField: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
@@ -30,11 +28,6 @@ class TransferViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         accounts = [4000000000, 4000000001, 4000000002]
         balances = [2013, 1230, 20404]
         
-        self.accountPicker.delegate = self
-        self.accountPicker.dataSource = self
-        
-        balanceLabel.text = String(balances[0])
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
         self.sumTextField.keyboardType = UIKeyboardType.numberPad
@@ -45,25 +38,8 @@ class TransferViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK:- IBActions:
     @IBAction func makeTransferButtonPressed(_ sender: UIButton) {
     }
-    @IBAction func saveSampleButtonPressed(_ sender: Any) {
-    }
     
     //MARK:- METHODS:
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return accounts.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(accounts[row])
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //
-        balanceLabel.text = String(balances[pickerView.selectedRow(inComponent: 0)])
-    }
     
     // with the keyboard
     @objc func outOfKeyBoardTapped(){

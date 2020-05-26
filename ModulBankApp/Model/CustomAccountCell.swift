@@ -8,14 +8,11 @@
 
 import UIKit
 
-class CustomSample2Cell: UITableViewCell {
+class CustomAccountCell: UITableViewCell {
 
 
-    @IBOutlet var sampleBackground: UIView!
-    @IBOutlet var operationImaveView: UIImageView!
-    @IBOutlet weak var operationLabel: UILabel!
-    @IBOutlet weak var receiverLabel: UILabel!
-    @IBOutlet weak var sumLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
