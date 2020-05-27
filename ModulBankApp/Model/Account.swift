@@ -14,8 +14,8 @@ class Account {
         
     }
     
-    var id = guid_t()
-    var userId = guid_t()
+    var id = UUID()
+    var userId = UUID()
     var number = Int64()
-    var balance = Decimal()
+    var balance = Int32()
 }

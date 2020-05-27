@@ -11,7 +11,9 @@ import Foundation
 class User {
     
     init() {
-        
+// delete after
+        username = "ANYA"
+        email = "melxxova@gmail.com"
     }
     
     init(username: String, email: String, password: String){
@@ -25,7 +27,15 @@ class User {
         self.password = password
     }
     
-    var id = guid_t()
+    init(user: User){
+        self.username = user.username
+        self.email = user.email
+        self.passwordHash = user.passwordHash
+        self.passwordSalt = user.passwordSalt
+        self.id = user.id
+    }
+    
+    var id = UUID()
     var username = String()
     var email = String()
     var passwordHash = String()

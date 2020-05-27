@@ -32,20 +32,24 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         if checkIfEmpty() {
             // error something is empty
+            showAlert(alertTitle: "Ошибка данных", alertMessage: "Заполните все поля, пожалуйста", actionTitle: "Окей")
         }
         else{
             if let email = emailTextField.text{
                 if let password = passwordTextField.text{
-                    let user = User(email: email, password: password)
+                   
                     // TODO: запрос на вход и получение токена
+                    let userService = UserService()
+                    
+                    let answer = userService.login(email: email, password: password)
+                    // if the login is successfull
+                    currentUser = User(user: userService.getByEmail(email: email))
+                    token = answer
+                    
+                    showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
+                    // TODO: послать запрос на регу
                     gotoAnotherView(identifier: "TabBarController")
                 }
-                else {
-                    //error smth s wrong with password
-                }
-            }
-            else{
-                // error smth is wrong with email
             }
         }
     }
@@ -55,6 +59,11 @@ class LoginViewController: UIViewController {
     }
     
     //MARK:- METHODS:
+    
+    override func viewWillAppear(_ animated: Bool) {
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
     
     func gotoAnotherView(identifier: String){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -93,5 +102,15 @@ class LoginViewController: UIViewController {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
         }
+    }
+    
+    // alert
+    func showAlert(alertTitle : String, alertMessage : String, actionTitle : String) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .default) { (UIAlertAction) in
+            self.view.layoutIfNeeded()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
 }

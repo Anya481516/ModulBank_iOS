@@ -23,9 +23,21 @@ class HomeViewController: UIViewController {
     
     //MARK:- IBActions:
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
-        gotoAnotherView(identifier: "LoginViewController")
+        let alert = UIAlertController(title: "Выход", message: "Вы уверенны что хотите выйти?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Да", style: .default) { (UIAlertAction) in
+            currentUser = User()
+            token = ""
+            self.gotoAnotherView(identifier: "LoginViewController")
+        }
+        let noAction = UIAlertAction(title: "Нет", style: .cancel) { (UIAlertAction) in
+            
+        }
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true, completion: nil)
     }
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        
     }
     
     //MARK:- METHODS:
@@ -37,6 +49,11 @@ class HomeViewController: UIViewController {
         self.dismiss(animated: true) {
             self.present(singupVC, animated: true, completion: nil)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
     }
     
 }

@@ -1219,7 +1219,7 @@
             <objects>
                 <viewController id="rPJ-1i-ZuH" userLabel="Invoice Table View Controller" customClass="InvoiceTableViewController" customModule="ModulBankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MxX-cM-asM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4MI-Ee-SvO" userLabel="Up View">
@@ -1258,7 +1258,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vB9-Ch-u5F">
-                                <rect key="frame" x="0.0" y="50" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -1797,7 +1797,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5V1-AR-Bf3"/>
+        <segue reference="3CD-VQ-je3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ProfilePic" width="640" height="640"/>

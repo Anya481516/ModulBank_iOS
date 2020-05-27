@@ -35,11 +35,13 @@ class SignupViewController: UIViewController {
     @IBAction func signuoButtonPressed(_ sender: UIButton) {
         if checkIfEmpty() {
             // error something is empty
+            showAlert(alertTitle: "Ошибка данных", alertMessage: "Заполните все поля, пожалуйста", actionTitle: "Окей")
         }
         else{
             if let username = usernameTextField.text{
                 if username.count < 3 {
                     // error username has to be at least 3 characters long
+                    showAlert(alertTitle: "Ошибка в имени", alertMessage: "Имя пользователя должно содержать по крайней мере 3 символа", actionTitle: "Окей")
                 }
                 else {
                     if let email = emailTextField.text {
@@ -47,23 +49,23 @@ class SignupViewController: UIViewController {
                             if let password2 = password2TextField.text {
                                 if password1 != password2 {
                                     // error passwords are not the same
+                                    showAlert(alertTitle: "Ошибка пароля", alertMessage: "Пароли не совпадают", actionTitle: "Окей")
                                 }
                                 else{
                                     // PERFECT!
                                     let user = User(username: username, email: email, password: password1)
+                                    
+                                    let userService = UserService()
+                                    let answer = userService.signUp(email: email, username: username, password: password1)
+                                    
+                                    showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
                                     // TODO: послать запрос на регу
-                                    gotoAnotherView(identifier: "TabBarController")
+                                    gotoAnotherView(identifier: "LoginViewController")
                                 }
                             }
                         }
                     }
-                    else {
-                        // error with email
-                    }
                 }
-            }
-            else {
-                //error somwthing is wrong with username
             }
         }
         
@@ -73,6 +75,12 @@ class SignupViewController: UIViewController {
     }
     
     //MARK:- METHODS:
+    
+    override func viewWillAppear(_ animated: Bool) {
+        usernameTextField.text = ""
+        emailTextField.text = ""
+        password1TextField.text = ""
+    }
     
     func gotoAnotherView(identifier: String){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -117,5 +125,13 @@ class SignupViewController: UIViewController {
         }
     }
 
-
+    // alert
+    func showAlert(alertTitle : String, alertMessage : String, actionTitle : String) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .default) { (UIAlertAction) in
+            self.view.layoutIfNeeded()
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 }

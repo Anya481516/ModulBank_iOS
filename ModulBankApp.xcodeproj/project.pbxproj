@@ -35,6 +35,8 @@
 		5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B224780724003A4AF1 /* AcountViewController.swift */; };
 		5DC3F5B52478073F003A4AF1 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */; };
 		5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5B624780750003A4AF1 /* LoginViewController.swift */; };
+		5DCCA6BC247F0EBC00A56E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BB247F0EBC00A56E5B /* UserService.swift */; };
+		5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BD247F295A00A56E5B /* AccountService.swift */; };
 		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
 		9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		5DC3F5B224780724003A4AF1 /* AcountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountViewController.swift; sourceTree = "<group>"; };
 		5DC3F5B42478073F003A4AF1 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		5DC3F5B624780750003A4AF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5DCCA6BB247F0EBC00A56E5B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		5DCCA6BD247F295A00A56E5B /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
 		632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.debug.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B02D29B4FAAC59AF8B335EE5 /* Pods-ModulBankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.release.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		5DC3F5912477D555003A4AF1 /* ModulBankApp */ = {
 			isa = PBXGroup;
 			children = (
+				5DCCA6BA247F0E9A00A56E5B /* Service */,
 				5DC3F5AB2478069C003A4AF1 /* Controller */,
 				5DC3F5AA24780694003A4AF1 /* Model */,
 				5DC3F5A924780687003A4AF1 /* View */,
@@ -174,6 +179,15 @@
 				5D301F0924798468004472CF /* OpenNewAccountViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		5DCCA6BA247F0E9A00A56E5B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				5DCCA6BB247F0EBC00A56E5B /* UserService.swift */,
+				5DCCA6BD247F295A00A56E5B /* AccountService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CA59CC2BCD81A205BBF29540 /* Frameworks */ = {
@@ -322,8 +336,10 @@
 				5DC3F5B124780707003A4AF1 /* HomeViewController.swift in Sources */,
 				5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */,
 				5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */,
+				5DCCA6BC247F0EBC00A56E5B /* UserService.swift in Sources */,
 				5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */,
 				5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */,
+				5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */,
 				5DC3F5AF247806F5003A4AF1 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
