@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
                     //let userService = UserService()
                     
                     //let answer = userService.login(email: email, password: password)
-                    var answer = "some error"
+                    
                     let parameters: [String: Any] = [
                         "Email": "dsas@gmail.com",
                         "Password": "dsas"
@@ -80,10 +80,10 @@ class LoginViewController: UIViewController {
                         response in
                         if response.result.isSuccess{
                             // return token
-                            let tokenJS = JSON(response.result.value!)
+                            token = JSON(response.result.value!)["token"].stringValue
                              print("Вход успешно выполнен!")
                             print(response.result)
-                            print(tokenJS)
+                            print(token)
                         }
                         else{
                             print("Ошибка во входе: \(response.result.error)")
