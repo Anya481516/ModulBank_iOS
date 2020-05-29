@@ -17,6 +17,9 @@ class AccountDetailsController: UIViewController {
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        accountNumberLabel.text = String(chosenAcc.number)
+        accountBalanceLabel.text = "\(chosenAcc.balance) рублей"
         // Do any additional setup after loading the view.
     }
     

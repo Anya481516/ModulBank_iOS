@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!
     
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     
     //MARK:- didLoad:

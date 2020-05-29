@@ -1812,7 +1812,6 @@
                     <connections>
                         <outlet property="accountBalanceLabel" destination="Sao-hR-m8w" id="j8k-8w-0B2"/>
                         <outlet property="accountNumberLabel" destination="zem-u8-nIn" id="cla-l1-Vxc"/>
-                        <outlet property="mainView" destination="8Be-l1-rgz" id="QzT-2Z-GBR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLc-ce-ZvD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

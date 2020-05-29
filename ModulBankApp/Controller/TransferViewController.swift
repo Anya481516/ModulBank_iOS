@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TransferViewController: UIViewController {
 
@@ -20,13 +22,17 @@ class TransferViewController: UIViewController {
     var accounts = [Int64]()
        var balances = [Int]()
     
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        accounts = [4000000000, 4000000001, 4000000002]
-        balances = [2013, 1230, 20404]
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)

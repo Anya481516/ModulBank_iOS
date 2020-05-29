@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
         
@@ -92,6 +93,7 @@ class HomeViewController: UIViewController {
             }
         }
 
+        currentUserAccounts = [Account]()
         let url2 = URL + "user/getAccounts"
         
         self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
