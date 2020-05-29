@@ -10,27 +10,54 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+//fileprivate extension UserService {
+//    enum Routes {
+//        case login
+//        var path: String {
+//            switch self {
+//            case .login:
+//                return "user/login"
+//            case .signup:
+//                <#code#>
+//            case .getUser:
+//                <#code#>
+//            }
+//        },
+//        case signup
+//        var path: String {
+//            switch self {
+//            case .signup:
+//                return "user/signup"
+//            }
+//        },
+//        case getUser
+//        var path: String {
+//            switch self {
+//            case .getUser:
+//                return "user/getUser"
+//            }
+//        }
+//    }
+//}
+
 class UserService {
     
     init(){
         
     }
-
     
-    let Almgr : Alamofire.SessionManager = {
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "192.168.0.100:44334": .disableEvaluation
-        ]
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        let man = Alamofire.SessionManager(
-            configuration: URLSessionConfiguration.default,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        return man
+    let baseURL: URL = {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "192.168.0.100"
+        components.port = 44334
+        guard let url = components.url else {
+            fatalError("can't create baseUrl")
+        }
+        return url
     }()
+    
+    
     
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
@@ -64,25 +91,29 @@ class UserService {
     
     func login(email: String, password: String) -> String {
         var answer = "some error"
-        let parameters: [String: Any] = [
+        let loginParameters: [String: Any] = [
             "Email": email,
             "Password": password
             ]
-        //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "http://192.168.0.100:44334/user/login"
-        
-        sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
+        let url = "https://192.168.0.100:44334/user/login"
+        var tokenJS = ""
+        sessionManager.request(url, method: .post, parameters: loginParameters, encoding: JSONEncoding.default).responseJSON{
             response in
             if response.result.isSuccess{
                 // return token
-                 print("Вход успешно выполнен!")
+                token = JSON(response.result.value!)["token"].stringValue
+                print("Вход успешно выполнен!")
+                print(response.result)
+                print("token from Service: \(token)")
+                
             }
             else{
                 print("Ошибка во входе: \(response.result.error)")
+                print(email, password, url)
             }
             
         }
-        return answer
+        return token
         
     }
     

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class SignupViewController: UIViewController {
 
@@ -16,6 +18,13 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var password1TextField: UITextField!
     @IBOutlet weak var password2TextField: UITextField!
     @IBOutlet var mainView: UIView!
+    
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- didLoad:
     override func viewDidLoad() {
@@ -55,12 +64,31 @@ class SignupViewController: UIViewController {
                                     // PERFECT!
                                     let user = User(username: username, email: email, password: password1)
                                     
-                                    let userService = UserService()
-                                    let answer = userService.signUp(email: email, username: username, password: password1)
+                                    //let userService = UserService()
+                                    //let answer = userService.signUp(email: email, username: username, password: password1)
                                     
-                                    showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
+                                    //showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
                                     // TODO: послать запрос на регу
-                                    gotoAnotherView(identifier: "LoginViewController")
+                                    //gotoAnotherView(identifier: "LoginViewController")
+                                    
+                                    var answer = "some error"
+                                    let parameters: [String: Any] = [
+                                        "Email": email,
+                                        "Username": username,
+                                        "Password": password1
+                                        ]
+                                    //let url2 = "http://api.openweathermap.org/data/2.5/weather"
+                                    let url = "https://192.168.0.100:44334/user/signup"
+                                    
+                                    sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
+                                        response in
+                                        if response.result.isSuccess{
+                                            print("Новый пользователь был успешно зарегистрирован!" )
+                                        }
+                                        else{
+                                            print("Ошибка в регистрации: \(response.result.error)")
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import  SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -15,9 +17,32 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet var mainView: UIView!
     
+    
+    private var Manager : Alamofire.SessionManager = {
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = ["http://192.168.0.100:44334/user/login": .disableEvaluation]
+        // Create custom manager
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        let man = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return man
+    }()
+    
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
@@ -38,17 +63,41 @@ class LoginViewController: UIViewController {
             if let email = emailTextField.text{
                 if let password = passwordTextField.text{
                    
+                    
+                    
                     // TODO: запрос на вход и получение токена
-                    let userService = UserService()
+                    //let userService = UserService()
                     
-                    let answer = userService.login(email: email, password: password)
+                    //let answer = userService.login(email: email, password: password)
+                    var answer = "some error"
+                    let parameters: [String: Any] = [
+                        "Email": email,
+                        "Password": password
+                        ]
+                    let url = "https://192.168.0.100:44334/user/getAllUsers"
+                    
+                sessionManager.request(url, method: .get).responseJSON{
+                        response in
+                        if response.result.isSuccess{
+                            // return token
+                            let tokenJS = JSON(response.result.value!)
+                             print("Вход успешно выполнен!")
+                            print(response.result)
+                            print(tokenJS)
+                        }
+                        else{
+                            print("Ошибка во входе: \(response.result.error)")
+                            print(email, password, url)
+                        }
+                        
+                    }
                     // if the login is successfull
-                    currentUser = User(user: userService.getByEmail(email: email))
-                    token = answer
+                    //currentUser = User(user: userService.getByEmail(email: email))
+                    //token = answer
                     
-                    showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
+                    //showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
                     // TODO: послать запрос на регу
-                    gotoAnotherView(identifier: "TabBarController")
+                    //gotoAnotherView(identifier: "TabBarController")
                 }
             }
         }
@@ -113,4 +162,6 @@ class LoginViewController: UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
 }
