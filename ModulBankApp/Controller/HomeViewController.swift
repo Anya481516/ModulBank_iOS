@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import  Alamofire
+import SwiftyJSON
 
 class HomeViewController: UIViewController {
 
@@ -15,10 +17,21 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var totalBalanceLabel: UILabel!
     
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+           open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+               return ServerTrustPolicy.disableEvaluation
+           }
+       }
+       let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    
+    var currentTotalBalance: Decimal = 0
+    
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
     }
     
     //MARK:- IBActions:
@@ -54,6 +67,30 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
+        
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "UserId": currentUser.id
+            ]
+        let url = URL + "user/getTotalBalance"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON {
+        response in
+            if let status = response.response?.statusCode {
+                if status == 200 {
+                    print( "We got the totlaAmount!!!")
+                    let balanceJSON : JSON = JSON(response.result.value!)
+                    self.currentTotalBalance = Decimal(string: balanceJSON.stringValue)!
+                    self.totalBalanceLabel.text = "\(self.currentTotalBalance) рублей"
+                    print(balanceJSON)
+                }
+                else {
+                    print("SERVER ERROR")
+                    print("Ошибка в получении баланса")
+                    print(status)
+                }
+            }
+        }
     }
     
 }
