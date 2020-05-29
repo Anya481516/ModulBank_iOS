@@ -38,6 +38,7 @@
 		5DCCA6BC247F0EBC00A56E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BB247F0EBC00A56E5B /* UserService.swift */; };
 		5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BD247F295A00A56E5B /* AccountService.swift */; };
 		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
+		5DF6323B2481A7940043A2FD /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */; };
 		9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		5DCCA6BB247F0EBC00A56E5B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5DCCA6BD247F295A00A56E5B /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
+		5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.debug.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B02D29B4FAAC59AF8B335EE5 /* Pods-ModulBankApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.release.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.release.xcconfig"; sourceTree = "<group>"; };
 		C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModulBankApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +179,7 @@
 				5D301EF924795468004472CF /* EditProfileViewController.swift */,
 				5D301F072479808F004472CF /* ChooseSampleViewController.swift */,
 				5D301F0924798468004472CF /* OpenNewAccountViewController.swift */,
+				5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				5DC3F5B324780724003A4AF1 /* AcountViewController.swift in Sources */,
 				5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */,
 				5DCCA6BC247F0EBC00A56E5B /* UserService.swift in Sources */,
+				5DF6323B2481A7940043A2FD /* AccountDetailsViewController.swift in Sources */,
 				5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */,
 				5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */,
 				5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */,

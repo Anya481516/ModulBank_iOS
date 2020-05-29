@@ -120,6 +120,7 @@ class LoginViewController: UIViewController {
                                             print("Ошибка в получении пользователя: \(response.result.error)")
                                         }
                                     }
+                                    
                                 }
                             }
                         }

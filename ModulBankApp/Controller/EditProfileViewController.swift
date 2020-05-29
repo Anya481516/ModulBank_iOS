@@ -59,28 +59,27 @@ class EditProfileViewController: UIViewController {
         let action = UIAlertAction(title: "Да", style: .default) { (UIAlertAction) in
             print(currentUser.id)
             self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-                   response in
-                   //if response.result.isSuccess{
-                       if let status = response.response?.statusCode {
-                           if status == 200{
-                               print("Ваш аккаунт был успешно удален" )
+                response in
+                    if let status = response.response?.statusCode {
+                        if status == 200{
+                            print("Ваш аккаунт был успешно удален")
                                //print(value)
                                //self.showAlert(alertTitle: "Мы будем скучать!", alertMessage: "Ваш аккаунт был успешно удален", actionTitle: "Ок")
                             self.clearHistory()
                             
                             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
                                
-                           }
-                           else {
-                               self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при удалении пользователя, пожалуйста, попробуйте снова", actionTitle: "Ок")
-                               print(status)
+                        }
+                        else {
+                            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при удалении пользователя, пожалуйста, попробуйте снова", actionTitle: "Ок")
+                            print(status)
                            
-                           }
-                       }
+                        }
+                    }
                     //}
-                   else {
+                    else {
                     print(response.error)
-                     print(currentUser.id)
+                    print(currentUser.id)
                 }
             }
         }

@@ -1656,7 +1656,7 @@
         <!--Deposit View Controller-->
         <scene sceneID="wHO-XZ-Pee">
             <objects>
-                <viewController id="gIZ-rP-YU0" userLabel="Deposit View Controller" customClass="DepositViewController" customModule="ModulBankApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gIZ-rP-YU0" userLabel="Deposit View Controller" customClass="AccountDetailsController" customModule="ModulBankApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Be-l1-rgz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1714,6 +1714,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="depositButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="xGa-dL-wpd"/>
                                                     <action selector="makeDepositButtonPressed:" destination="tqX-vG-upT" eventType="touchUpInside" id="bxB-kM-JFf"/>
                                                     <segue destination="tqX-vG-upT" kind="show" id="AHz-KV-QvQ"/>
                                                 </connections>
@@ -1733,7 +1734,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="makeTransferButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="qCC-rW-1dT"/>
+                                                    <action selector="transferButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="lDb-4B-0ia"/>
                                                     <segue destination="WV6-fh-gGt" kind="show" id="dfe-F7-TLE"/>
                                                 </connections>
                                             </button>
@@ -1752,7 +1753,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="makePaymentButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="n8C-W2-M2w"/>
+                                                    <action selector="paymentButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="dC2-dE-bt8"/>
                                                     <segue destination="bdo-R8-krN" kind="show" id="pue-yl-BW9"/>
                                                 </connections>
                                             </button>
@@ -1809,6 +1810,8 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="eUN-O4-IyG"/>
                     <connections>
+                        <outlet property="accountBalanceLabel" destination="Sao-hR-m8w" id="j8k-8w-0B2"/>
+                        <outlet property="accountNumberLabel" destination="zem-u8-nIn" id="cla-l1-Vxc"/>
                         <outlet property="mainView" destination="8Be-l1-rgz" id="QzT-2Z-GBR"/>
                     </connections>
                 </viewController>

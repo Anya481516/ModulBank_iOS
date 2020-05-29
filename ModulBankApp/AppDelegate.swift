@@ -13,7 +13,7 @@ var currentUser = User()
 var token = ""
 var chosenAcc = Account()
 var URL = "https://192.168.0.100:44334/"
-
+var currentUserAccounts = [Account]()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

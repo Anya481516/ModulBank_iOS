@@ -50,9 +50,9 @@ class AccountService {
             if response.result.isSuccess{
                 answer = "Вход успешно выполнен!"
                 let userJSON : JSON = JSON(response.result.value!)
-                account.id = UUID(uuidString: userJSON["id"].string!)!
+                account.id = userJSON["id"].string!
                 account.number = Int64(userJSON["accNumber"].string!)!
-                account.balance = Int32(userJSON["balance"].string!)!
+                account.balance = (userJSON["balance"].int64!)
             }
             else{
                 answer = "Ошибка в получении пользователя: \(response.result.error)"
