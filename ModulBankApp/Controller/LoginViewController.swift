@@ -71,12 +71,12 @@ class LoginViewController: UIViewController {
                     //let answer = userService.login(email: email, password: password)
                     var answer = "some error"
                     let parameters: [String: Any] = [
-                        "Email": email,
-                        "Password": password
+                        "Email": "dsas@gmail.com",
+                        "Password": "dsas"
                         ]
-                    let url = "https://192.168.0.100:44334/user/getAllUsers"
+                    let url = "https://192.168.1.11:44334/user/login"
                     
-                sessionManager.request(url, method: .get).responseJSON{
+                sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
                         response in
                         if response.result.isSuccess{
                             // return token
