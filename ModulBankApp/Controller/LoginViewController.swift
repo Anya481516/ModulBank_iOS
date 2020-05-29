@@ -86,21 +86,24 @@ class LoginViewController: UIViewController {
                             print(token)
                             
                             // getting the user
+                            let headers = ["Authorization": "Bearer " + token]
                             let parameters: [String: Any] = [
                                 "Email": email
                                 ]
                             //let url2 = "http://api.openweathermap.org/data/2.5/weather"
                             let url = "https://192.168.1.11:44334/user/getByEmail"
                             
-                            self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default).responseJSON{
+                            self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
                                 response in
                                 if response.result.isSuccess{
                                     print( "We got the user!!!")
                                     let userJSON : JSON = JSON(response.result.value!)
-                                    currentUser.id = UUID(uuidString: userJSON["uid"].string!)!
+                                    currentUser.id = UUID(uuidString: userJSON["id"].string!)!
                                     currentUser.email = userJSON["email"].string!
                                     currentUser.passwordHash = userJSON["passwordHash"].string!
-                                    currentUser.passwordSalt = userJSON["passwordSalt"].string!
+                                    currentUser.passwordSalt = userJSON["salt"].string!
+                                    currentUser.username = userJSON["username"].string!
+                                    print(userJSON)
                                 }
                                 else{
                                     print("Ошибка в получении пользователя: \(response.result.error)")
