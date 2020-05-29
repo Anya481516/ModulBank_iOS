@@ -71,8 +71,8 @@ class LoginViewController: UIViewController {
                     //let answer = userService.login(email: email, password: password)
                     
                     let parameters: [String: Any] = [
-                        "Email": "dsas@gmail.com",
-                        "Password": "dsas"
+                        "Email": email,
+                        "Password": password
                         ]
                     let url = "https://192.168.1.11:44334/user/login"
                     
@@ -82,8 +82,31 @@ class LoginViewController: UIViewController {
                             // return token
                             token = JSON(response.result.value!)["token"].stringValue
                              print("Вход успешно выполнен!")
-                            print(response.result)
+                            print(response.result.description)
                             print(token)
+                            
+                            // getting the user
+                            let parameters: [String: Any] = [
+                                "Email": email
+                                ]
+                            //let url2 = "http://api.openweathermap.org/data/2.5/weather"
+                            let url = "https://192.168.1.11:44334/user/getByEmail"
+                            
+                            self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default).responseJSON{
+                                response in
+                                if response.result.isSuccess{
+                                    print( "We got the user!!!")
+                                    let userJSON : JSON = JSON(response.result.value!)
+                                    currentUser.id = UUID(uuidString: userJSON["uid"].string!)!
+                                    currentUser.email = userJSON["email"].string!
+                                    currentUser.passwordHash = userJSON["passwordHash"].string!
+                                    currentUser.passwordSalt = userJSON["passwordSalt"].string!
+                                }
+                                else{
+                                    print("Ошибка в получении пользователя: \(response.result.error)")
+                                }
+                            }
+                            
                         }
                         else{
                             print("Ошибка во входе: \(response.result.error)")

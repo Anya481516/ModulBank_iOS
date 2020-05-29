@@ -78,12 +78,13 @@ class SignupViewController: UIViewController {
                                         "Password": password1
                                         ]
                                     //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-                                    let url = "https://192.168.0.100:44334/user/signup"
+                                    let url = "https://192.168.1.11:44334/user/signup"
                                     
-                                    sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
+                                    sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
                                         response in
                                         if response.result.isSuccess{
                                             print("Новый пользователь был успешно зарегистрирован!" )
+                                            print(response.result.description)
                                         }
                                         else{
                                             print("Ошибка в регистрации: \(response.result.error)")
