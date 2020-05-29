@@ -12,8 +12,11 @@ class User {
     
     init() {
 // delete after
-        username = "ANYA"
-        email = "melxxova@gmail.com"
+        username = ""
+        email = ""
+        id = String()
+        passwordHash = ""
+        passwordSalt = ""
     }
     
     init(username: String, email: String, password: String){
@@ -35,7 +38,7 @@ class User {
         self.id = user.id
     }
     
-    var id = UUID()
+    var id = String()
     var username = String()
     var email = String()
     var passwordHash = String()

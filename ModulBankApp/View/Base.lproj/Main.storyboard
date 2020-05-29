@@ -298,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEy-4P-0KU" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-12" y="826"/>
+            <point key="canvasLocation" x="-100" y="789"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="lzQ-FL-xwI">
@@ -1318,7 +1318,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCh-XY-PgG" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="650"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="d9D-k4-0EU" userLabel="Profile Image View">
                                                 <rect key="frame" x="100" y="20" width="175" height="175"/>
@@ -1426,6 +1426,24 @@
                                                     <action selector="changePhotoButtonPressed:" destination="2kU-wf-oCK" eventType="touchUpInside" id="R2f-D1-ugF"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvJ-ox-XOg" userLabel="Change Password Button">
+                                                <rect key="frame" x="16" y="650" width="343" height="30"/>
+                                                <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="5pE-4Z-xPT"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Удалить свой аккаунт"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deleteUserButtonPressed:" destination="2kU-wf-oCK" eventType="touchUpInside" id="PuL-19-MiS"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="pQK-Ed-hJT" firstAttribute="top" secondItem="lCh-XY-PgG" secondAttribute="top" constant="20" id="2b0-tW-sKR"/>
@@ -1445,12 +1463,15 @@
                                             <constraint firstItem="pSZ-px-efT" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="PxO-sz-Bqr"/>
                                             <constraint firstItem="Ujp-L4-VbT" firstAttribute="top" secondItem="d9D-k4-0EU" secondAttribute="bottom" constant="30" id="SeV-JQ-rCQ"/>
                                             <constraint firstItem="pSZ-px-efT" firstAttribute="top" secondItem="3zh-jA-2JC" secondAttribute="bottom" constant="8" id="XVv-Ri-UjF"/>
+                                            <constraint firstAttribute="trailing" secondItem="NvJ-ox-XOg" secondAttribute="trailing" constant="16" id="YyG-I8-QwE"/>
                                             <constraint firstItem="dIM-dE-Toe" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="akM-PL-Sgs"/>
                                             <constraint firstItem="3zh-jA-2JC" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="bRS-A5-e1y"/>
+                                            <constraint firstAttribute="bottom" secondItem="NvJ-ox-XOg" secondAttribute="bottom" constant="20" id="crP-LS-bnu"/>
                                             <constraint firstAttribute="trailing" secondItem="DZL-jQ-K14" secondAttribute="trailing" constant="16" id="dIc-TG-8I9"/>
                                             <constraint firstAttribute="trailing" secondItem="h4H-L2-asc" secondAttribute="trailing" constant="16" id="fcm-px-nHG"/>
                                             <constraint firstItem="SEG-xj-uUc" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="gsW-iW-059"/>
                                             <constraint firstItem="XpV-3W-DM2" firstAttribute="top" secondItem="h4H-L2-asc" secondAttribute="bottom" constant="20" id="iIY-X3-Z9C"/>
+                                            <constraint firstItem="NvJ-ox-XOg" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="lUk-pt-PAm"/>
                                             <constraint firstItem="d9D-k4-0EU" firstAttribute="width" secondItem="d9D-k4-0EU" secondAttribute="height" multiplier="1:1" id="m92-nS-ymZ"/>
                                             <constraint firstAttribute="trailing" secondItem="pQK-Ed-hJT" secondAttribute="trailing" constant="100" id="oR5-AV-SfQ"/>
                                             <constraint firstItem="DZL-jQ-K14" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="16" id="oZy-Lm-O3a"/>
@@ -1463,7 +1484,7 @@
                                             <constraint firstItem="pQK-Ed-hJT" firstAttribute="leading" secondItem="lCh-XY-PgG" secondAttribute="leading" constant="100" id="scV-UC-7LK"/>
                                             <constraint firstItem="3zh-jA-2JC" firstAttribute="top" secondItem="Ujp-L4-VbT" secondAttribute="bottom" constant="8" id="sg9-E6-OS6"/>
                                             <constraint firstAttribute="trailing" secondItem="XmD-v1-yy3" secondAttribute="trailing" constant="16" id="uhg-Zf-MO3"/>
-                                            <constraint firstAttribute="height" constant="650" id="vaP-DK-r6Y"/>
+                                            <constraint firstAttribute="height" constant="700" id="vaP-DK-r6Y"/>
                                             <constraint firstAttribute="trailing" secondItem="pSZ-px-efT" secondAttribute="trailing" constant="16" id="xGe-fF-ZFU"/>
                                             <constraint firstAttribute="trailing" secondItem="dIM-dE-Toe" secondAttribute="trailing" constant="16" id="xNl-ma-IV0"/>
                                             <constraint firstItem="d9D-k4-0EU" firstAttribute="width" secondItem="d9D-k4-0EU" secondAttribute="height" multiplier="1:1" id="z1T-yA-ZDS"/>

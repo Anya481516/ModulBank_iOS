@@ -12,6 +12,8 @@ import CoreData
 var currentUser = User()
 var token = ""
 var chosenAcc = Account()
+var URL = "https://192.168.0.100:44334/"
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

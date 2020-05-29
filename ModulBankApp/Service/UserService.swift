@@ -131,7 +131,7 @@ class UserService {
             if response.result.isSuccess{
                 answer = "Вход успешно выполнен!"
                 let userJSON : JSON = JSON(response.result.value!)
-                user.id = UUID(uuidString: userJSON["uid"].string!)!
+                user.id = userJSON["uid"].string!
                 user.email = userJSON["email"].string!
                 user.passwordHash = userJSON["passwordHash"].string!
                 user.passwordSalt = userJSON["passwordSalt"].string!
