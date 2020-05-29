@@ -15,6 +15,30 @@ class UserService {
     init(){
         
     }
+
+    
+    let Almgr : Alamofire.SessionManager = {
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "192.168.0.100:44334": .disableEvaluation
+        ]
+        // Create custom manager
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        let man = Alamofire.SessionManager(
+            configuration: URLSessionConfiguration.default,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return man
+    }()
+    
+    
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     func signUp(email: String, username: String, password: String) -> String {
         var answer = "some error"
@@ -24,7 +48,7 @@ class UserService {
             "Password": password
             ]
         //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "https://localhost:44334/user/signup"
+        let url = "https://192.168.0.100:44334/user/signup"
         
         Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
             response in
@@ -45,19 +69,21 @@ class UserService {
             "Password": password
             ]
         //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "https://localhost:44334/user/login"
+        let url = "http://192.168.0.100:44334/user/login"
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
             response in
             if response.result.isSuccess{
                 // return token
-                answer = "Вход успешно выполнен!"
+                 print("Вход успешно выполнен!")
             }
             else{
-                answer = "Ошибка во входе: \(response.result.error)"
+                print("Ошибка во входе: \(response.result.error)")
             }
+            
         }
         return answer
+        
     }
     
     func getByEmail(email: String) -> User {
@@ -67,9 +93,9 @@ class UserService {
             "Email": email
             ]
         //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "https://localhost:44334/user/getByEmail"
+        let url = "https://192.168.0.100:44334/user/getByEmail"
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
             response in
             if response.result.isSuccess{
                 answer = "Вход успешно выполнен!"
