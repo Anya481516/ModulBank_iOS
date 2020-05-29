@@ -870,6 +870,7 @@
                     <connections>
                         <outlet property="mainView" destination="C2r-d2-grj" id="o7J-Te-pfB"/>
                         <outlet property="makePaymentButton" destination="YRD-vu-Ufc" id="blC-3I-G3V"/>
+                        <outlet property="nameTextField" destination="VwP-Ul-Lm3" id="LyL-H1-wqn"/>
                         <outlet property="newBalanceLabel" destination="PmC-dQ-bDt" id="KV1-W6-ZWO"/>
                         <outlet property="placeToLabel" destination="U3C-ni-xe7" id="IkU-8I-lJu"/>
                         <outlet property="sumTextField" destination="b3C-tP-lf8" id="2Cf-Nh-gza"/>
@@ -1114,6 +1115,9 @@
                                                 <rect key="frame" x="16" y="61" width="343" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="tqX-vG-upT" eventType="editingChanged" id="umG-Vm-DI6"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма пополнения:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-aN-LDa">
                                                 <rect key="frame" x="16" y="30" width="343" height="21"/>
