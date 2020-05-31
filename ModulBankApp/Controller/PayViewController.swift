@@ -10,7 +10,15 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class PayViewController: UIViewController {
+
+class PayViewController: UIViewController, SampleProtocol {
+    
+    func fillInfo(name: String, email: String, sum: Int64) {
+        sumTextField.text = "\(sum)"
+        nameTextField.text = name
+        placeToLabel.text = email
+    }
+    
 
     //MARK:- IBOutlets:
     @IBOutlet weak var nameTextField: UITextField!
@@ -19,6 +27,8 @@ class PayViewController: UIViewController {
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton!
+    
+    
     
     var accounts = [Int64]()
        var balances = [Int]()
@@ -164,6 +174,12 @@ class PayViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromPaymentToSamples", let destinationVC = segue.destination as? SampleViewController {
+            destinationVC.delegate = self
         }
     }
 }

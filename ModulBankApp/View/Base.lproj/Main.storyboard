@@ -697,7 +697,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="zHg-Yu-Hj7" kind="show" id="iSK-gH-Sbo"/>
+                                            <segue destination="zHg-Yu-Hj7" kind="show" identifier="fromPaymentToSamples" id="iSK-gH-Sbo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1071,6 +1071,7 @@
                     <navigationItem key="navigationItem" id="mS8-I5-SxI"/>
                     <connections>
                         <outlet property="tableView" destination="NsK-zJ-Nob" id="67k-uC-JEU"/>
+                        <segue destination="WV6-fh-gGt" kind="show" identifier="fromSamplesToPayment" id="eJB-GB-0Kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32a-d6-9qK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1825,6 +1826,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3CD-VQ-je3"/>
+        <segue reference="eJB-GB-0Kd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ProfilePic" width="640" height="640"/>

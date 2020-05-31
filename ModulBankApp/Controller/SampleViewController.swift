@@ -10,13 +10,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol SampleProtocol {
+    func fillInfo(name: String, email: String, sum: Int64)
+}
+
 class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
 
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!
       var refreshControl = UIRefreshControl()
+    var delegate : SampleProtocol?
     
     var samples = [SampleItem]()
     
@@ -60,6 +63,12 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.titleLabel.text = "\(samples[indexPath.row].name)"
         cell.emailLabel.text = "\(samples[indexPath.row].email)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sample = samples[indexPath.row]
+        delegate?.fillInfo(name: sample.name, email: sample.name, sum: sample.sum)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func configureTableView() {
