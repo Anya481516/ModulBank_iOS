@@ -12,12 +12,12 @@ class HistoryItem {
     init(){
         
     }
-    init(id: String, date: String, time: String, userId: String, accountId: String, name: String, destination: String, sum: Int64){
+    init(id: String, date: String, time: String, userId: String, accountNumber: String, name: String, destination: String, sum: Int64){
         self.id = id
         self.date = date
         self.time = time
         self.userId = userId
-        //self.accountId = accountId
+        self.accountNumber = accountNumber
         self.name = name
         self.destination = destination
         self.sum = sum
@@ -27,7 +27,7 @@ class HistoryItem {
     var date = String()
     var time = String()
     var userId = String()
-   // var accountId = Int64()
+    var accountNumber = String()
     var name = String()
     var destination = String()
     var sum = Int64()

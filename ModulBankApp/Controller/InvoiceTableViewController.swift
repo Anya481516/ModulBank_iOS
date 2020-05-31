@@ -57,9 +57,16 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customInvoiceCell", for: indexPath) as! CustomInvoiceCell
-        cell.dateLabel.text = "\(history[indexPath.row].date) \(history[indexPath.row].time)"
-        cell.emailLabel.text = "\(history[indexPath.row].destination)"
-        cell.titleLabel.text = "\(history[indexPath.row].name)"
+        let historyItem = history[indexPath.row]
+        cell.dateLabel.text = "\(historyItem.date) \(historyItem.time)"
+        if history[indexPath.row].name == "Пополнение" {
+            cell.emailLabel.text = "\(historyItem.accountNumber)"
+        }
+        else {
+            cell.emailLabel.text = "С \(historyItem.accountNumber) \nНа \(history[indexPath.row].destination)"
+        }
+        cell.sumLabel.text = "\(historyItem.sum) Р"
+        cell.titleLabel.text = "\(historyItem.name)"
         return cell
     }
     
@@ -90,11 +97,11 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
                             let date = (historyJSON[n]["date"].string!)
                             let time = (historyJSON[n]["time"].string!)
                             let userId = (historyJSON[n]["userId"].string!)
-                            //let accountId = (historyJSON[n]["accId"].int64!)
+                            let accountNumber = (historyJSON[n]["accNumber"].string!)
                             let name = (historyJSON[n]["name"].string!)
                             let destination = (historyJSON[n]["destination"].string != nil ? historyJSON[n]["destination"].string! : "")
                             let sum = (historyJSON[n]["sum"].int64!)
-                            let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, name: name, destination: destination, sum:  sum)
+                            let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, accountNumber: accountNumber, name: name, destination: destination, sum:  sum)
                             self.history.append(historyItem)
                         }
                         self.tableView.reloadData()
