@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 
-class PayViewController: UIViewController, SampleProtocol {
+class PayViewController: UIViewController, SampleDelegate {
     
     func fillInfo(name: String, email: String, sum: Int64) {
         sumTextField.text = "\(sum)"
@@ -44,7 +44,7 @@ class PayViewController: UIViewController, SampleProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        newBalanceLabel.text = "\(chosenAcc.balance) Р"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -53,6 +53,14 @@ class PayViewController: UIViewController, SampleProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    @IBAction func editingChanged(_ sender: Any) {
+        if sumTextField.text == "" {
+            newBalanceLabel.text = "\(chosenAcc.balance) Р"
+        }
+        if let sum = Int64(sumTextField.text!){
+            newBalanceLabel.text = "\(chosenAcc.balance - sum) Р"
+        }
+    }
     //MARK:- IBActions:
     @IBAction func makePayButtonPressed(_ sender: Any) {
         if let sum = Int64(sumTextField.text!){

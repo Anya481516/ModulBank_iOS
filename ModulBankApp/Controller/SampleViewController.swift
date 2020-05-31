@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-protocol SampleProtocol {
+protocol SampleDelegate {
     func fillInfo(name: String, email: String, sum: Int64)
 }
 
@@ -19,7 +19,7 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!
       var refreshControl = UIRefreshControl()
-    var delegate : SampleProtocol?
+    var delegate : SampleDelegate?
     
     var samples = [SampleItem]()
     
