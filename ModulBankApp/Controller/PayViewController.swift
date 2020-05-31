@@ -118,6 +118,33 @@ class PayViewController: UIViewController {
     }
     
     @IBAction func saveSampleButtonPressed(_ sender: Any) {
+        if let sum = Int64(sumTextField.text!){
+        if let name = nameTextField.text{
+            if let email = placeToLabel.text{
+                let headers = ["Authorization": "Bearer " + token]
+                let parameters: [String: Any] = [
+                    "AccId": chosenAcc.id,
+                     "Name": name,
+                     "Destination": email,
+                     "Sum": sum
+                    ]
+                let url = URL + "account/saveToSamples"
+                
+                self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+                response in
+                    if let status = response.response?.statusCode {
+                    if status == 200{
+                        self.showAlert(alertTitle: "Готово", alertMessage: "Ваш шаблон успешно сохранен!", actionTitle: "Ок")
+                        }
+                    else {
+                         print(response.error)
+                            self.showAlert(alertTitle: "Упс!", alertMessage: "Что-то не так с шаблоном!", actionTitle: "Ок =(")
+                        }
+                }
+            }
+            }
+        }
+    }
     }
     
     //MARK:- METHODS:

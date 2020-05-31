@@ -23,6 +23,7 @@
 		5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F072479808F004472CF /* ChooseSampleViewController.swift */; };
 		5D301F0A24798468004472CF /* OpenNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F0924798468004472CF /* OpenNewAccountViewController.swift */; };
 		5DB91E182483EA0100A58E54 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB91E172483EA0100A58E54 /* UIViewControllerExtension.swift */; };
+		5DB91E1A248426D400A58E54 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB91E19248426D400A58E54 /* SampleItem.swift */; };
 		5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5922477D555003A4AF1 /* AppDelegate.swift */; };
 		5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */; };
 		5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5962477D555003A4AF1 /* ViewController.swift */; };
@@ -61,6 +62,7 @@
 		5D301F072479808F004472CF /* ChooseSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSampleViewController.swift; sourceTree = "<group>"; };
 		5D301F0924798468004472CF /* OpenNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNewAccountViewController.swift; sourceTree = "<group>"; };
 		5DB91E172483EA0100A58E54 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		5DB91E19248426D400A58E54 /* SampleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleItem.swift; sourceTree = "<group>"; };
 		5DC3F58F2477D555003A4AF1 /* ModulBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC3F5922477D555003A4AF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC3F5942477D555003A4AF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				5D301F052479760F004472CF /* CustomAccountCell.swift */,
 				5D1A3B2C247D32ED00D3FECD /* CustomExampleCell.swift */,
 				5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */,
+				5DB91E19248426D400A58E54 /* SampleItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				5D301EFA24795468004472CF /* EditProfileViewController.swift in Sources */,
 				5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */,
 				5D301F062479760F004472CF /* CustomAccountCell.swift in Sources */,
+				5DB91E1A248426D400A58E54 /* SampleItem.swift in Sources */,
 				5DF6323D2481BF8D0043A2FD /* HistoryItem.swift in Sources */,
 				5DB91E182483EA0100A58E54 /* UIViewControllerExtension.swift in Sources */,
 				5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */,

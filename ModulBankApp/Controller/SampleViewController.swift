@@ -16,6 +16,9 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!
+      var refreshControl = UIRefreshControl()
+    
+    var samples = [SampleItem]()
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
@@ -33,23 +36,78 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ExampleCell", bundle: nil), forCellReuseIdentifier: "customExampleCell")
         self.configureTableView()
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     //MARK:- IBActions:
     
     //MARK:- METHODS:
+    
+    @objc func refresh(_ sender: AnyObject) {
+           tableView.reloadData()
+           refreshControl.endRefreshing()
+       }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return samples.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customExampleCell", for: indexPath) as! CustomExampleCell
+        cell.sumLabel.text = "\(samples[indexPath.row].sum) P"
+        cell.titleLabel.text = "\(samples[indexPath.row].name)"
+        cell.emailLabel.text = "\(samples[indexPath.row].email)"
         return cell
     }
     
     func configureTableView() {
         tableView.rowHeight = 75
         tableView.estimatedRowHeight = 120
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        samples.removeAll()
+        
+        let headers = ["Authorization": "Bearer " + token]
+               let parameters: [String: Any] = [
+                   "UserId": currentUser.id
+                   ]
+        
+        
+        let url2 = URL + "user/getSamples"
+        
+        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        let historyJSON : JSON = JSON(response.result.value!)
+                        print("Шаблоны загружены!")
+                        for n in 0...historyJSON.count-1 {
+                            let id = (historyJSON[n]["id"].string!)
+                            let userId = (historyJSON[n]["userId"].string!)
+                            let name = (historyJSON[n]["name"].string!)
+                            let email = (historyJSON[n]["receivingEmail"].string!)
+                            let sum = (historyJSON[n]["sum"].int64!)
+                            let sampleItem = SampleItem(id: id, userId: userId, name: name, email: email, sum:  sum)
+                            self.samples.append(sampleItem)
+                        }
+                        //print(historyJSON)
+                        self.tableView.reloadData()
+                    }
+                    else {
+                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке шаблонов", actionTitle: "Ок")
+                        print(status)
+                       
+                    }
+                }
+                //}
+                else {
+                print(response.error)
+                print(currentUser.id)
+            }
+        }
     }
 
 }
