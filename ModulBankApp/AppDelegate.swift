@@ -12,7 +12,7 @@ import CoreData
 var currentUser = User()
 var token = ""
 var chosenAcc = Account()
-var URL = "https://192.168.0.100:44334/"
+var URL = "https://192.168.1.16:44334/"
 var currentUserAccounts = [Account]()
 
 @UIApplicationMain
