@@ -35,6 +35,9 @@ class EditProfileViewController: UIViewController {
         
         self.emailTextField.keyboardType = UIKeyboardType.emailAddress
         
+        emailTextField.text = currentUser.email
+        usernameTextField.text = currentUser.username
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

@@ -17,6 +17,7 @@ class PayViewController: UIViewController, SampleDelegate {
         sumTextField.text = "\(sum)"
         nameTextField.text = name
         placeToLabel.text = email
+        newBalanceLabel.text = "\(chosenAcc.balance - sum) P"
     }
     
 

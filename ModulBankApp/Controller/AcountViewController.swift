@@ -57,8 +57,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customAccountCell", for: indexPath) as! CustomAccountCell
-        cell.balanceLabel.text = "\(currentUserAccounts[indexPath.row].balance)"
-        cell.titleLabel.text = String(currentUserAccounts[indexPath.row].number)
+        cell.balanceLabel.text = "\(currentUserAccounts[indexPath.row].balance) P"
+        cell.titleLabel.text = "\(currentUserAccounts[indexPath.row].number)"
         return cell
     }
     

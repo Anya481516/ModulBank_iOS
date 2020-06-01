@@ -918,10 +918,10 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rF-ut-z7e" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="447"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVZ-gP-e82" userLabel="Done Button">
-                                                <rect key="frame" x="16" y="387" width="343" height="40"/>
+                                                <rect key="frame" x="16" y="440" width="343" height="40"/>
                                                 <color key="backgroundColor" name="ButtonColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Io3-SV-bir"/>
@@ -936,10 +936,9 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="showInvoiceButtonPressed:" destination="KQr-Ue-NYm" eventType="touchUpInside" id="2Hl-vo-c2e"/>
-                                                    <segue destination="rPJ-1i-ZuH" kind="show" id="5V1-AR-Bf3"/>
                                                 </connections>
                                             </button>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" translatesAutoresizingMaskIntoConstraints="NO" id="mkY-Bu-e16" userLabel="Date Picker 1">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="mkY-Bu-e16" userLabel="Date Picker 1">
                                                 <rect key="frame" x="0.0" y="61" width="375" height="130"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="130" id="WYP-SN-D8C"/>
@@ -958,7 +957,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" translatesAutoresizingMaskIntoConstraints="NO" id="01K-1G-6VP" userLabel="Date Picker 2">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="01K-1G-6VP" userLabel="Date Picker 2">
                                                 <rect key="frame" x="0.0" y="237" width="375" height="130"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="130" id="QyP-ew-N84"/>
@@ -967,7 +966,7 @@
                                             </datePicker>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="447" id="5Iy-Hq-5Ru"/>
+                                            <constraint firstAttribute="height" constant="500" id="5Iy-Hq-5Ru"/>
                                             <constraint firstItem="01K-1G-6VP" firstAttribute="top" secondItem="XeI-DC-OcS" secondAttribute="bottom" constant="10" id="G0g-5F-o92"/>
                                             <constraint firstAttribute="trailing" secondItem="6Ef-hr-VOf" secondAttribute="trailing" constant="16" id="IH3-ys-jad"/>
                                             <constraint firstItem="6Ef-hr-VOf" firstAttribute="leading" secondItem="7rF-ut-z7e" secondAttribute="leading" constant="16" id="OFC-qb-79v"/>
@@ -1252,7 +1251,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="calendar" catalog="system"/>
                                         <connections>
-                                            <segue destination="KQr-Ue-NYm" kind="show" id="zmM-PO-Nqh"/>
+                                            <segue destination="KQr-Ue-NYm" kind="show" identifier="fromHistoryToChoosePeriod" id="zmM-PO-Nqh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1831,7 +1830,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3CD-VQ-je3"/>
         <segue reference="eJB-GB-0Kd"/>
     </inferredMetricsTieBreakers>
     <resources>

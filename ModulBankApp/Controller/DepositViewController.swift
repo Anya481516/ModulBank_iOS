@@ -33,7 +33,7 @@ class DepositViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        newBalanceLabel.text = "\(chosenAcc.balance)"
+        newBalanceLabel.text = "\(chosenAcc.balance) Р"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -47,10 +47,10 @@ class DepositViewController: UIViewController {
 
     @IBAction func editingChanged(_ sender: Any) {
         if sumTextFiewld.text == "" {
-            newBalanceLabel.text = "\(chosenAcc.balance)"
+            newBalanceLabel.text = "\(chosenAcc.balance) Р"
         }
         if let sum = Int64(sumTextFiewld.text!){
-            newBalanceLabel.text = "\(chosenAcc.balance + sum)"
+            newBalanceLabel.text = "\(chosenAcc.balance + sum) Р"
         }
     }
     

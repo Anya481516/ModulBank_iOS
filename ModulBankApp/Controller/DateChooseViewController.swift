@@ -7,27 +7,43 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+
+protocol HistoryDelegate {
+    //func (name: String, email: String, sum: Int64)
+    func reloadTableData(date1: String, date2: String)
+    }
 
 class DateChooseViewController: UIViewController {
 
     //MARK:- IBOutlets:
     @IBOutlet weak var date1Picker: UIDatePicker!
     @IBOutlet weak var date2Picker: UIDatePicker!
-    
-    var accounts = [Int64]()
-    var balances = [Int]()
+    var delegate : HistoryDelegate?
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        accounts = [4000000000, 4000000001, 4000000002]
-        balances = [2013, 1230, 20404]
     }
     
     //MARK:- IBActions:
     @IBAction func showInvoiceButtonPressed(_ sender: Any) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date1 = dateFormatter.string(from: date1Picker.date)
+        let date2 = dateFormatter.string(from: date2Picker.date)
+        
+        //let date1 = date1Picker.date
+        //let date3 = date2Picker.date
+        
+        delegate?.reloadTableData(date1: date1, date2: date2)
+        
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK:- METHODS:
