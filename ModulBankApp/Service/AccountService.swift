@@ -16,6 +16,15 @@ class AccountService {
         
     }
     
+    let URL = "https://192.168.1.16:44334/"
+    
+    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
+        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
+            return ServerTrustPolicy.disableEvaluation
+        }
+    }
+    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    
     func openNew(uid: UUID, balance: Decimal) -> String {
         var answer = "some error"
         let parameters: [String: Any] = [

@@ -23,6 +23,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!
     var refreshControl = UIRefreshControl()
+    let userService = UserService()
     
     //MARK:- didLoad:
     override func viewDidLoad() {
@@ -47,7 +48,11 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK:- METHODS:
     
     @objc func refresh(_ sender: AnyObject) {
-        tableView.reloadData()
+        userService.getAccounts(uid: currentUser.id, success: {
+            self.tableView.reloadData()
+        }) {
+            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
+        }
         refreshControl.endRefreshing()
     }
     
@@ -73,45 +78,10 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
        }
     
     override func viewWillAppear(_ animated: Bool) {
-        currentUserAccounts.removeAll()
-        
-        let headers = ["Authorization": "Bearer " + token]
-               let parameters: [String: Any] = [
-                   "UserId": currentUser.id
-                   ]
-        
-        
-        let url2 = URL + "user/getAccounts"
-        
-        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-            response in
-                if let status = response.response?.statusCode {
-                    if status == 200{
-                        let accountsJSON : JSON = JSON(response.result.value!)
-                        print("счетазагружены")
-                        var accNumber: Int64 = 123
-                        for n in 0...accountsJSON.count-1 {
-                            accNumber = (accountsJSON[n]["accNumber"].int64!)
-                            let accBalance = (accountsJSON[n]["balance"].int64!)
-                            let accId = accountsJSON[n]["id"].string!
-                            let uId = accountsJSON[n]["userId"].string!
-                            let acc = Account(id: accId, userId: uId, number: accNumber, balance: accBalance)
-                            currentUserAccounts.append(acc)
-                        }
-                        self.tableView.reloadData()
-                        print(currentUserAccounts[0].id, currentUserAccounts[0].balance, currentUserAccounts[0].number, currentUserAccounts[0].userId)
-                    }
-                    else {
-                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
-                        print(status)
-                       
-                    }
-                }
-                //}
-                else {
-                print(response.error)
-                print(currentUser.id)
-            }
+        userService.getAccounts(uid: currentUser.id, success: {
+            self.tableView.reloadData()
+        }) {
+            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
         }
     }
 }

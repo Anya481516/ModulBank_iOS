@@ -151,6 +151,45 @@ class UserService {
         }
     }
     
+    func getAccounts(uid: String, success: @escaping () -> Void, failure: @escaping () -> Void){
+        currentUserAccounts.removeAll()
+        
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "UserId": uid
+        ]
+    
+        let url = URL + "user/getAccounts"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        let accountsJSON : JSON = JSON(response.result.value!)
+                        print("счетазагружены")
+                        var accNumber: Int64 = 123
+                        for n in 0...accountsJSON.count-1 {
+                            accNumber = (accountsJSON[n]["accNumber"].int64!)
+                            let accBalance = (accountsJSON[n]["balance"].int64!)
+                            let accId = accountsJSON[n]["id"].string!
+                            let uId = accountsJSON[n]["userId"].string!
+                            let acc = Account(id: accId, userId: uId, number: accNumber, balance: accBalance)
+                            currentUserAccounts.append(acc)
+                        }
+                        success()
+                    }
+                    else {
+                        failure()
+                    }
+                }
+                //}
+                else {
+                print(response.error)
+                failure()
+            }
+        }
+    }
+    
     // to be continued
     func getAllInfo(uid: UUID) -> User{
         return User()
