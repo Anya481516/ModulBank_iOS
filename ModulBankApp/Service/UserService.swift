@@ -46,19 +46,7 @@ class UserService {
         
     }
     
-    let baseURL: URL = {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "192.168.0.100"
-        components.port = 44334
-        guard let url = components.url else {
-            fatalError("can't create baseUrl")
-        }
-        return url
-    }()
-    
-    
-    
+    let URL = "https://192.168.1.16:44334/"
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
@@ -67,26 +55,29 @@ class UserService {
     }
     let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
-    func signUp(email: String, username: String, password: String) -> String {
+    func signUp(email: String, username: String, password: String, success: @escaping () -> Void, falure: @escaping () -> Void) {
         var answer = "some error"
         let parameters: [String: Any] = [
             "Email": email,
             "Username": username,
             "Password": password
             ]
-        //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "https://192.168.0.100:44334/user/signup"
-        
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
+        let url = URL + "user/signup"
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
             response in
-            if response.result.isSuccess{
-                answer = "Новый пользователь был успешно зарегистрирован!"
-            }
-            else{
-                answer = "Ошибка в регистрации: \(response.result.error)"
-            }
+            //if response.result.isSuccess{
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        print("Новый пользователь был успешно зарегистрирован!" )
+                        //print(value)
+                        success()
+                    }
+                    else{
+                        falure()
+                        print(status)
+                    }
+                }
         }
-        return answer
     }
     
     func login(email: String, password: String) -> String {

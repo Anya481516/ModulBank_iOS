@@ -18,6 +18,7 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var password1TextField: UITextField!
     @IBOutlet weak var password2TextField: UITextField!
     @IBOutlet var mainView: UIView!
+    let userService = UserService()
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
@@ -64,39 +65,43 @@ class SignupViewController: UIViewController {
                                     
                                     // PERFECT!
                                     
-                                    //let userService = UserService()
-                                    //let answer = userService.signUp(email: email, username: username, password: password1)
+                                    userService.signUp(email: email, username: username, password: password1, success: {
+                                        print("Новый пользователь был успешно зарегистрирован!" )
+                                        //print(value)
+                                        self.showAlert(alertTitle: "Добро Пожаловать!", alertMessage: "Вы успешно зарегистрировались. Для входа в приложение пожалуйста авторизируйтесь", actionTitle: "Ок")
+                                        self.gotoAnotherView(identifier: "LoginViewController")
+                                    }) {
+                                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при регистрации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
+                                        //print(status)
+                                    }
+                                    
                                     //showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
                                     // TODO: послать запрос на регу
                                     
                                     
-                                    let parameters: [String: Any] = [
-                                        "Email": email,
-                                        "Username": username,
-                                        "Password": password1
-                                        ]
-                                    let url = URL + "user/signup"
-                                    
-                                    sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
-                                        response in
-                                        //if response.result.isSuccess{
-                                            if let status = response.response?.statusCode {
-                                                if status == 200{
-                                                    print("Новый пользователь был успешно зарегистрирован!" )
-                                                    //print(value)
-                                                    self.showAlert(alertTitle: "Добро Пожаловать!", alertMessage: "Вы успешно зарегистрировались. Для входа в приложение пожалуйста авторизируйтесь", actionTitle: "Ок")
-                                                    self.gotoAnotherView(identifier: "LoginViewController")
-                                                }
-                                                else{
-                                                    self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при регистрации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
-                                                    print(status)
-                                                }
-                                            }
-                                        //}
-                                       // else{
-                                        //    print("Ошибка в регистрации: \(response.result.error)")
-                                        //}
-                                    }
+//                                    let parameters: [String: Any] = [
+//                                        "Email": email,
+//                                        "Username": username,
+//                                        "Password": password1
+//                                        ]
+//                                    let url = URL + "user/signup"
+//
+//                                    sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
+//                                        response in
+//                                        //if response.result.isSuccess{
+//                                            if let status = response.response?.statusCode {
+//                                                if status == 200{
+//                                                    print("Новый пользователь был успешно зарегистрирован!" )
+//                                                    //print(value)
+//                                                    self.showAlert(alertTitle: "Добро Пожаловать!", alertMessage: "Вы успешно зарегистрировались. Для входа в приложение пожалуйста авторизируйтесь", actionTitle: "Ок")
+//                                                    self.gotoAnotherView(identifier: "LoginViewController")
+//                                                }
+//                                                else{
+//                                                    self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при регистрации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
+//                                                    print(status)
+//                                                }
+//                                            }
+//                                    }
                                 }
                             }
                         }
