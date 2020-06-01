@@ -22,6 +22,21 @@
 		5D301F062479760F004472CF /* CustomAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F052479760F004472CF /* CustomAccountCell.swift */; };
 		5D301F082479808F004472CF /* ChooseSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F072479808F004472CF /* ChooseSampleViewController.swift */; };
 		5D301F0A24798468004472CF /* OpenNewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D301F0924798468004472CF /* OpenNewAccountViewController.swift */; };
+		5D7A9A15248520B200F3397E /* transferScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A06248520B100F3397E /* transferScreen.jpg */; };
+		5D7A9A16248520B200F3397E /* signupScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A07248520B100F3397E /* signupScreen.jpg */; };
+		5D7A9A17248520B200F3397E /* depositScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A08248520B100F3397E /* depositScreen.jpg */; };
+		5D7A9A18248520B200F3397E /* historyScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A09248520B100F3397E /* historyScreen.jpg */; };
+		5D7A9A19248520B200F3397E /* chooseDatesScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0A248520B100F3397E /* chooseDatesScreen.jpg */; };
+		5D7A9A1A248520B200F3397E /* profileScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0B248520B100F3397E /* profileScreen.jpg */; };
+		5D7A9A1B248520B200F3397E /* samplesScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0C248520B100F3397E /* samplesScreen.jpg */; };
+		5D7A9A1C248520B200F3397E /* changeProfileScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0D248520B100F3397E /* changeProfileScreen.jpg */; };
+		5D7A9A1D248520B200F3397E /* accountDetailsScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0E248520B100F3397E /* accountDetailsScreen.jpg */; };
+		5D7A9A1E248520B200F3397E /* accountsScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A0F248520B200F3397E /* accountsScreen.jpg */; };
+		5D7A9A1F248520B200F3397E /* paymentScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A10248520B200F3397E /* paymentScreen.jpg */; };
+		5D7A9A20248520B200F3397E /* deleteUserScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A11248520B200F3397E /* deleteUserScreen.jpg */; };
+		5D7A9A21248520B200F3397E /* loginScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A12248520B200F3397E /* loginScreen.jpg */; };
+		5D7A9A22248520B200F3397E /* historyWithDatesScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A13248520B200F3397E /* historyWithDatesScreen.jpg */; };
+		5D7A9A23248520B200F3397E /* saveSampleScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D7A9A14248520B200F3397E /* saveSampleScreen.jpg */; };
 		5DB91E182483EA0100A58E54 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB91E172483EA0100A58E54 /* UIViewControllerExtension.swift */; };
 		5DB91E1A248426D400A58E54 /* SampleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DB91E19248426D400A58E54 /* SampleItem.swift */; };
 		5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC3F5922477D555003A4AF1 /* AppDelegate.swift */; };
@@ -61,6 +76,21 @@
 		5D301F052479760F004472CF /* CustomAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAccountCell.swift; sourceTree = "<group>"; };
 		5D301F072479808F004472CF /* ChooseSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSampleViewController.swift; sourceTree = "<group>"; };
 		5D301F0924798468004472CF /* OpenNewAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenNewAccountViewController.swift; sourceTree = "<group>"; };
+		5D7A9A06248520B100F3397E /* transferScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = transferScreen.jpg; path = Images/transferScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A07248520B100F3397E /* signupScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = signupScreen.jpg; path = Images/signupScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A08248520B100F3397E /* depositScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = depositScreen.jpg; path = Images/depositScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A09248520B100F3397E /* historyScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = historyScreen.jpg; path = Images/historyScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0A248520B100F3397E /* chooseDatesScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = chooseDatesScreen.jpg; path = Images/chooseDatesScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0B248520B100F3397E /* profileScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profileScreen.jpg; path = Images/profileScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0C248520B100F3397E /* samplesScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = samplesScreen.jpg; path = Images/samplesScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0D248520B100F3397E /* changeProfileScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = changeProfileScreen.jpg; path = Images/changeProfileScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0E248520B100F3397E /* accountDetailsScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accountDetailsScreen.jpg; path = Images/accountDetailsScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A0F248520B200F3397E /* accountsScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = accountsScreen.jpg; path = Images/accountsScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A10248520B200F3397E /* paymentScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = paymentScreen.jpg; path = Images/paymentScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A11248520B200F3397E /* deleteUserScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = deleteUserScreen.jpg; path = Images/deleteUserScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A12248520B200F3397E /* loginScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loginScreen.jpg; path = Images/loginScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A13248520B200F3397E /* historyWithDatesScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = historyWithDatesScreen.jpg; path = Images/historyWithDatesScreen.jpg; sourceTree = SOURCE_ROOT; };
+		5D7A9A14248520B200F3397E /* saveSampleScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = saveSampleScreen.jpg; path = Images/saveSampleScreen.jpg; sourceTree = SOURCE_ROOT; };
 		5DB91E172483EA0100A58E54 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		5DB91E19248426D400A58E54 /* SampleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleItem.swift; sourceTree = "<group>"; };
 		5DC3F58F2477D555003A4AF1 /* ModulBankApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModulBankApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +139,28 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5D7A9A052485208D00F3397E /* ForGithub */ = {
+			isa = PBXGroup;
+			children = (
+				5D7A9A0E248520B100F3397E /* accountDetailsScreen.jpg */,
+				5D7A9A0F248520B200F3397E /* accountsScreen.jpg */,
+				5D7A9A0D248520B100F3397E /* changeProfileScreen.jpg */,
+				5D7A9A0A248520B100F3397E /* chooseDatesScreen.jpg */,
+				5D7A9A11248520B200F3397E /* deleteUserScreen.jpg */,
+				5D7A9A08248520B100F3397E /* depositScreen.jpg */,
+				5D7A9A09248520B100F3397E /* historyScreen.jpg */,
+				5D7A9A13248520B200F3397E /* historyWithDatesScreen.jpg */,
+				5D7A9A12248520B200F3397E /* loginScreen.jpg */,
+				5D7A9A10248520B200F3397E /* paymentScreen.jpg */,
+				5D7A9A0B248520B100F3397E /* profileScreen.jpg */,
+				5D7A9A0C248520B100F3397E /* samplesScreen.jpg */,
+				5D7A9A14248520B200F3397E /* saveSampleScreen.jpg */,
+				5D7A9A07248520B100F3397E /* signupScreen.jpg */,
+				5D7A9A06248520B100F3397E /* transferScreen.jpg */,
+			);
+			path = ForGithub;
+			sourceTree = "<group>";
+		};
 		5DB91E162483E9A500A58E54 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +172,7 @@
 		5DC3F5862477D555003A4AF1 = {
 			isa = PBXGroup;
 			children = (
+				5D7A9A052485208D00F3397E /* ForGithub */,
 				5DC3F5912477D555003A4AF1 /* ModulBankApp */,
 				5DC3F5902477D555003A4AF1 /* Products */,
 				5353869AF9378A024B5706DA /* Pods */,
@@ -278,12 +331,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7A9A18248520B200F3397E /* historyScreen.jpg in Resources */,
+				5D7A9A1E248520B200F3397E /* accountsScreen.jpg in Resources */,
+				5D7A9A1A248520B200F3397E /* profileScreen.jpg in Resources */,
 				5DC3F5A22477D558003A4AF1 /* LaunchScreen.storyboard in Resources */,
+				5D7A9A22248520B200F3397E /* historyWithDatesScreen.jpg in Resources */,
+				5D7A9A15248520B200F3397E /* transferScreen.jpg in Resources */,
+				5D7A9A1D248520B200F3397E /* accountDetailsScreen.jpg in Resources */,
+				5D7A9A19248520B200F3397E /* chooseDatesScreen.jpg in Resources */,
 				5D301F04247975D1004472CF /* AccountCell.xib in Resources */,
+				5D7A9A23248520B200F3397E /* saveSampleScreen.jpg in Resources */,
+				5D7A9A21248520B200F3397E /* loginScreen.jpg in Resources */,
 				5D301EEA24793CFA004472CF /* InvoiceCell.xib in Resources */,
 				5DC3F59F2477D558003A4AF1 /* Assets.xcassets in Resources */,
+				5D7A9A17248520B200F3397E /* depositScreen.jpg in Resources */,
+				5D7A9A20248520B200F3397E /* deleteUserScreen.jpg in Resources */,
+				5D7A9A1B248520B200F3397E /* samplesScreen.jpg in Resources */,
+				5D7A9A16248520B200F3397E /* signupScreen.jpg in Resources */,
+				5D7A9A1C248520B200F3397E /* changeProfileScreen.jpg in Resources */,
 				5D1A3B2B247D311100D3FECD /* ExampleCell.xib in Resources */,
 				5DC3F59A2477D555003A4AF1 /* Main.storyboard in Resources */,
+				5D7A9A1F248520B200F3397E /* paymentScreen.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
