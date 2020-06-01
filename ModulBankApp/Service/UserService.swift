@@ -55,8 +55,7 @@ class UserService {
     }
     let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
-    func signUp(email: String, username: String, password: String, success: @escaping () -> Void, falure: @escaping () -> Void) {
-        var answer = "some error"
+    func signUp(email: String, username: String, password: String, success: @escaping () -> Void, failure: @escaping () -> Void) {
         let parameters: [String: Any] = [
             "Email": email,
             "Username": username,
@@ -73,30 +72,40 @@ class UserService {
                         success()
                     }
                     else{
-                        falure()
+                        failure()
                         print(status)
                     }
                 }
         }
     }
     
-    func login(email: String, password: String) -> String {
-        var answer = "some error"
-        let loginParameters: [String: Any] = [
+    func login(email: String, password: String,  success: @escaping () -> Void, failure: @escaping () -> Void) {
+        let parameters: [String: Any] = [
             "Email": email,
             "Password": password
             ]
-        let url = "https://192.168.0.100:44334/user/login"
-        var tokenJS = ""
-        sessionManager.request(url, method: .post, parameters: loginParameters, encoding: JSONEncoding.default).responseJSON{
+        let url = URL +  "user/login"
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
             response in
             if response.result.isSuccess{
                 // return token
-                token = JSON(response.result.value!)["token"].stringValue
-                print("Вход успешно выполнен!")
-                print(response.result)
-                print("token from Service: \(token)")
-                
+                if let status = response.response?.statusCode {
+                    if status == 200 {
+                        token = JSON(response.result.value!)["token"].stringValue
+                        
+                        print("Вход успешно выполнен!")
+                        print(response.result.description)
+                        print(token)
+                        
+                        // getting the user
+                        self.getByEmail(email: email, success: {
+                            success()
+                        }) {
+                            failure()
+                        }
+
+                    }
+                }
             }
             else{
                 print("Ошибка во входе: \(response.result.error)")
@@ -104,34 +113,42 @@ class UserService {
             }
             
         }
-        return token
         
     }
     
-    func getByEmail(email: String) -> User {
-        var answer = "some error"
-        let user = User()
+    func getByEmail(email: String, success: @escaping () -> Void, failure: @escaping () -> Void) {
+        let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
             "Email": email
-            ]
-        //let url2 = "http://api.openweathermap.org/data/2.5/weather"
-        let url = "https://192.168.0.100:44334/user/getByEmail"
+        ]
+        let url = URL + "user/getByEmail"
         
-        sessionManager.request(url, method: .post, parameters: parameters).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
             if response.result.isSuccess{
-                answer = "Вход успешно выполнен!"
-                let userJSON : JSON = JSON(response.result.value!)
-                user.id = userJSON["uid"].string!
-                user.email = userJSON["email"].string!
-                user.passwordHash = userJSON["passwordHash"].string!
-                user.passwordSalt = userJSON["passwordSalt"].string!
+                if let status = response.response?.statusCode {
+                    if status == 200 {
+                        print( "We got the user!!!")
+                        let userJSON : JSON = JSON(response.result.value!)
+                        currentUser.id = userJSON["id"].string!
+                        currentUser.email = userJSON["email"].string!
+                        currentUser.passwordHash = userJSON["passwordHash"].string!
+                        currentUser.passwordSalt = userJSON["salt"].string!
+                        currentUser.username = userJSON["username"].string!
+                        print(userJSON)
+                        print(currentUser.id)
+                        success()
+                    }
+                    else {
+                        failure()
+                    }
+                }
             }
             else{
-                answer = "Ошибка в получении пользователя: \(response.result.error)"
+                failure()
+                print("Ошибка в получении пользователя: \(response.result.error)")
             }
         }
-        return user
     }
     
     // to be continued

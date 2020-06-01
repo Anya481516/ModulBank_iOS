@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class SignupViewController: UIViewController {
 
@@ -19,13 +17,6 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var password2TextField: UITextField!
     @IBOutlet var mainView: UIView!
     let userService = UserService()
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- didLoad:
     override func viewDidLoad() {
@@ -69,39 +60,11 @@ class SignupViewController: UIViewController {
                                         print("Новый пользователь был успешно зарегистрирован!" )
                                         //print(value)
                                         self.showAlert(alertTitle: "Добро Пожаловать!", alertMessage: "Вы успешно зарегистрировались. Для входа в приложение пожалуйста авторизируйтесь", actionTitle: "Ок")
-                                        self.gotoAnotherView(identifier: "LoginViewController")
+                                        self.gotoAnotherView(identifier: "LoginViewController", sender: self)
                                     }) {
                                         self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при регистрации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
                                         //print(status)
                                     }
-                                    
-                                    //showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
-                                    // TODO: послать запрос на регу
-                                    
-                                    
-//                                    let parameters: [String: Any] = [
-//                                        "Email": email,
-//                                        "Username": username,
-//                                        "Password": password1
-//                                        ]
-//                                    let url = URL + "user/signup"
-//
-//                                    sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
-//                                        response in
-//                                        //if response.result.isSuccess{
-//                                            if let status = response.response?.statusCode {
-//                                                if status == 200{
-//                                                    print("Новый пользователь был успешно зарегистрирован!" )
-//                                                    //print(value)
-//                                                    self.showAlert(alertTitle: "Добро Пожаловать!", alertMessage: "Вы успешно зарегистрировались. Для входа в приложение пожалуйста авторизируйтесь", actionTitle: "Ок")
-//                                                    self.gotoAnotherView(identifier: "LoginViewController")
-//                                                }
-//                                                else{
-//                                                    self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при регистрации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
-//                                                    print(status)
-//                                                }
-//                                            }
-//                                    }
                                 }
                             }
                         }
@@ -125,15 +88,6 @@ class SignupViewController: UIViewController {
         token = ""
         currentUser = User()
         chosenAcc = Account()
-    }
-    
-    func gotoAnotherView(identifier: String){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let singupVC = storyboard.instantiateViewController(identifier: identifier)
-        singupVC.modalPresentationStyle = .fullScreen
-        self.dismiss(animated: true) {
-            self.present(singupVC, animated: true, completion: nil)
-        }
     }
     
     func checkIfEmpty() -> Bool {

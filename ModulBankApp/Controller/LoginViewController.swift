@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import  SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -16,34 +14,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet var mainView: UIView!
-    
-    
-    private var Manager : Alamofire.SessionManager = {
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = ["http://192.168.0.100:44334/user/login": .disableEvaluation]
-        // Create custom manager
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        let man = Alamofire.SessionManager(
-            configuration: URLSessionConfiguration.default,
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        return man
-    }()
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    let userService = UserService()
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -62,88 +37,18 @@ class LoginViewController: UIViewController {
         else{
             if let email = emailTextField.text{
                 if let password = passwordTextField.text{
-                   
-                    
-                    
-                    // TODO: запрос на вход и получение токена
-                    //let userService = UserService()
-                    
-                    //let answer = userService.login(email: email, password: password)
-                    
-                    let parameters: [String: Any] = [
-                        "Email": email,
-                        "Password": password
-                        ]
-                    let url = URL +  "user/login"
-                    
-                sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
-                        response in
-                        if response.result.isSuccess{
-                            // return token
-                            if let status = response.response?.statusCode {
-                                if status == 200 {
-                                    token = JSON(response.result.value!)["token"].stringValue
-                                    
-                                    print("Вход успешно выполнен!")
-                                    print(response.result.description)
-                                    print(token)
-                                    
-                                    // getting the user
-                                    let headers = ["Authorization": "Bearer " + token]
-                                    let parameters: [String: Any] = [
-                                        "Email": email
-                                        ]
-                                    let url = URL + "user/getByEmail"
-                                    
-                                    self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
-                                        response in
-                                        if response.result.isSuccess{
-                                            if let status = response.response?.statusCode {
-                                                if status == 200 {
-                                                    print( "We got the user!!!")
-                                                    let userJSON : JSON = JSON(response.result.value!)
-                                                    currentUser.id = userJSON["id"].string!
-                                                    currentUser.email = userJSON["email"].string!
-                                                    currentUser.passwordHash = userJSON["passwordHash"].string!
-                                                    currentUser.passwordSalt = userJSON["salt"].string!
-                                                    currentUser.username = userJSON["username"].string!
-                                                    print(userJSON)
-                                                    print(currentUser.id)
-                                                    self.gotoAnotherView(identifier: "TabBarController")
-                                                }
-                                                else {
-                                                    print("SERVER ERROR")
-                                                }
-                                            }
-                                        }
-                                        else{
-                                            print("Ошибка в получении пользователя: \(response.result.error)")
-                                        }
-                                    }
-                                    
-                                }
-                            }
-                        }
-                        else{
-                            print("Ошибка во входе: \(response.result.error)")
-                            print(email, password, url)
-                        }
-                        
+                    userService.login(email: email, password: password, success: {
+                        self.gotoAnotherView(identifier: "TabBarController", sender: self)
+                    }) {
+                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при авторизации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")
                     }
-                    // if the login is successfull
-                    //currentUser = User(user: userService.getByEmail(email: email))
-                    //token = answer
-                    
-                    //showAlert(alertTitle: "yo", alertMessage: answer, actionTitle: "ok")
-                    // TODO: послать запрос на регу
-                    //gotoAnotherView(identifier: "TabBarController")
                 }
             }
         }
     }
     
     @IBAction func signupButtonPressed(_ sender: UIButton) {
-        gotoAnotherView(identifier: "SignupViewController")
+        gotoAnotherView(identifier: "SignupViewController", sender: self)
     }
     
     //MARK:- METHODS:
@@ -155,16 +60,6 @@ class LoginViewController: UIViewController {
         currentUser = User()
         chosenAcc = Account()
     }
-    
-    func gotoAnotherView(identifier: String){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let singupVC = storyboard.instantiateViewController(identifier: identifier)
-        singupVC.modalPresentationStyle = .fullScreen
-        self.dismiss(animated: true) {
-            self.present(singupVC, animated: true, completion: nil)
-        }
-    }
-    
     
     func checkIfEmpty() -> Bool {
         if emailTextField.text?.isEmpty == true{
