@@ -172,7 +172,6 @@
 		5DC3F5862477D555003A4AF1 = {
 			isa = PBXGroup;
 			children = (
-				5D7A9A052485208D00F3397E /* ForGithub */,
 				5DC3F5912477D555003A4AF1 /* ModulBankApp */,
 				5DC3F5902477D555003A4AF1 /* Products */,
 				5353869AF9378A024B5706DA /* Pods */,
@@ -191,6 +190,7 @@
 		5DC3F5912477D555003A4AF1 /* ModulBankApp */ = {
 			isa = PBXGroup;
 			children = (
+				5D7A9A052485208D00F3397E /* ForGithub */,
 				5DB91E162483E9A500A58E54 /* Extension */,
 				5DCCA6BA247F0E9A00A56E5B /* Service */,
 				5DC3F5AB2478069C003A4AF1 /* Controller */,
