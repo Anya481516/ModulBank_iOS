@@ -80,44 +80,11 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         samples.removeAll()
-        
-        let headers = ["Authorization": "Bearer " + token]
-               let parameters: [String: Any] = [
-                   "UserId": currentUser.id
-                   ]
-        
-        
-        let url2 = URL + "user/getSamples"
-        
-        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-            response in
-                if let status = response.response?.statusCode {
-                    if status == 200{
-                        let historyJSON : JSON = JSON(response.result.value!)
-                        print("Шаблоны загружены!")
-                        for n in 0...historyJSON.count-1 {
-                            let id = (historyJSON[n]["id"].string!)
-                            let userId = (historyJSON[n]["userId"].string!)
-                            let name = (historyJSON[n]["name"].string!)
-                            let email = (historyJSON[n]["receivingEmail"].string!)
-                            let sum = (historyJSON[n]["sum"].int64!)
-                            let sampleItem = SampleItem(id: id, userId: userId, name: name, email: email, sum:  sum)
-                            self.samples.append(sampleItem)
-                        }
-                        //print(historyJSON)
-                        self.tableView.reloadData()
-                    }
-                    else {
-                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке шаблонов", actionTitle: "Ок")
-                        print(status)
-                       
-                    }
-                }
-                //}
-                else {
-                print(response.error)
-                print(currentUser.id)
-            }
+        userService.getSamples(uid: currentUser.id, success: { (newSamples) in
+            self.samples = newSamples
+            self.tableView.reloadData()
+        }) {
+            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке шаблонов", actionTitle: "Ок")
         }
     }
 

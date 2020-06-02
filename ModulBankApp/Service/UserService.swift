@@ -279,6 +279,44 @@ class UserService {
         }
     }
     
+    func getSamples(uid: String, success: @escaping (_ samples: [SampleItem]) -> Void, failure: @escaping () -> Void){
+        var samples = [SampleItem]()
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "UserId": currentUser.id
+            ]
+        let url2 = URL + "user/getSamples"
+        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        let samplesJSON : JSON = JSON(response.result.value!)
+                        print("Шаблоны загружены!")
+                        for n in 0...samplesJSON.count-1 {
+                            let id = (samplesJSON[n]["id"].string!)
+                            let userId = (samplesJSON[n]["userId"].string!)
+                            let name = (samplesJSON[n]["name"].string!)
+                            let email = (samplesJSON[n]["receivingEmail"].string!)
+                            let sum = (samplesJSON[n]["sum"].int64!)
+                            let sampleItem = SampleItem(id: id, userId: userId, name: name, email: email, sum:  sum)
+                            samples.append(sampleItem)
+                        }
+                        //print(historyJSON)
+                        success(samples)
+                    }
+                    else {
+                        print(status)
+                       failure()
+                    }
+                }
+                //}
+                else {
+                print(response.error)
+                print(currentUser.id)
+            }
+        }
+    }
+    
     func delete(uid: String, success: @escaping () -> Void, failure: @escaping () -> Void){
         let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
