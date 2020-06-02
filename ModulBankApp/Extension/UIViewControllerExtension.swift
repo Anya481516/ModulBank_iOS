@@ -14,7 +14,16 @@ extension UIViewController {
     func showAlert(alertTitle : String, alertMessage : String, actionTitle : String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: actionTitle, style: .default) { (UIAlertAction) in
-            self.view.layoutIfNeeded()
+            
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertWithAction(alertTitle : String, alertMessage : String, actionTitle : String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: actionTitle, style: .default) { (UIAlertAction) in
+            completion()
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)

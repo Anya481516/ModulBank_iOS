@@ -95,17 +95,19 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
                     if status == 200{
                         let historyJSON : JSON = JSON(response.result.value!)
                         print("история загружена!")
-                        for n in 0...historyJSON.count-1 {
-                            let id = (historyJSON[n]["id"].string!)
-                            let date = (historyJSON[n]["date"].string!)
-                            let time = (historyJSON[n]["time"].string!)
-                            let userId = (historyJSON[n]["userId"].string!)
-                            let accountNumber = (historyJSON[n]["accNumber"].string!)
-                            let name = (historyJSON[n]["name"].string!)
-                            let destination = (historyJSON[n]["destination"].string != nil ? historyJSON[n]["destination"].string! : "")
-                            let sum = (historyJSON[n]["sum"].int64!)
-                            let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, accountNumber: accountNumber, name: name, destination: destination, sum:  sum)
-                            self.history.append(historyItem)
+                        if historyJSON.count > 0 {
+                            for n in 0...historyJSON.count-1 {
+                                let id = (historyJSON[n]["id"].string!)
+                                let date = (historyJSON[n]["date"].string!)
+                                let time = (historyJSON[n]["time"].string!)
+                                let userId = (historyJSON[n]["userId"].string!)
+                                let accountNumber = (historyJSON[n]["accNumber"].string!)
+                                let name = (historyJSON[n]["name"].string!)
+                                let destination = (historyJSON[n]["destination"].string != nil ? historyJSON[n]["destination"].string! : "")
+                                let sum = (historyJSON[n]["sum"].int64!)
+                                let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, accountNumber: accountNumber, name: name, destination: destination, sum:  sum)
+                                self.history.append(historyItem)
+                            }
                         }
                         self.tableView.reloadData()
                     }

@@ -168,13 +168,15 @@ class UserService {
                         let accountsJSON : JSON = JSON(response.result.value!)
                         print("счетазагружены")
                         var accNumber: Int64 = 123
-                        for n in 0...accountsJSON.count-1 {
-                            accNumber = (accountsJSON[n]["accNumber"].int64!)
-                            let accBalance = (accountsJSON[n]["balance"].int64!)
-                            let accId = accountsJSON[n]["id"].string!
-                            let uId = accountsJSON[n]["userId"].string!
-                            let acc = Account(id: accId, userId: uId, number: accNumber, balance: accBalance)
-                            currentUserAccounts.append(acc)
+                        if accountsJSON.count > 0 {
+                            for n in 0...accountsJSON.count-1 {
+                                accNumber = (accountsJSON[n]["accNumber"].int64!)
+                                let accBalance = (accountsJSON[n]["balance"].int64!)
+                                let accId = accountsJSON[n]["id"].string!
+                                let uId = accountsJSON[n]["userId"].string!
+                                let acc = Account(id: accId, userId: uId, number: accNumber, balance: accBalance)
+                                currentUserAccounts.append(acc)
+                            }
                         }
                         success()
                     }

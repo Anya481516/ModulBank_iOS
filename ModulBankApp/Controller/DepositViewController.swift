@@ -49,7 +49,9 @@ class DepositViewController: UIViewController {
     @IBAction func makeDepositButtonPressed(_ sender: UIButton) {
         if let sum = Int64(sumTextFiewld.text!){
             accountService.deposit(uid: currentUser.id, accId: chosenAcc.id, sum: sum, success: {
-                self.dismiss(animated: true, completion: nil)
+                self.showAlertWithAction(alertTitle: "Успех!", alertMessage: "Платеж проведен!", actionTitle: "Ок") {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }) {
                 self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при создании счета, пожалуйста, попробуйте снова", actionTitle: "Ок")
             }

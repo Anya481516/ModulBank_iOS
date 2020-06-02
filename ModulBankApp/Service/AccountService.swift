@@ -106,25 +106,37 @@ class AccountService {
         }
     }
     
-    func transfer(sendingAccId: UUID, receivingAccId: UUID, sum: Int32) -> String{
-        var answer = "some error"
+    func transfer(sendingAccId: String, receivingAccNumber: Int64, sum: Int64, success: @escaping () -> Void, failure: @escaping () -> Void){
+        let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
-            "SendingAccId":  sendingAccId,
-            "ReceivingAccId":  receivingAccId,
-            "sum": sum
-            ]
-        let url = "https://localhost:44334/account/transfer_to_another_account"
+            "SendingAccId": sendingAccId,
+            "ReceivingAccNumber": receivingAccNumber,
+            "Sum": sum
+        ]
+        let url = URL + "account/transfer_to_another_account"
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
-            response in
-            if response.result.isSuccess{
-                answer = "Перевод был успешно совершен!"
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        response in
+            if let status = response.response?.statusCode {
+                if status == 200{
+                    print("перевод выполнен!")
+                    chosenAcc.balance = sum
+                    // get users again
+                    self.userService.getAccounts(uid: currentUser.id, success: {
+                        success()
+                    }) {
+                        failure()
+                    }
+                }
+                else {
+                    print(response.error)
+                    failure()
+                }
             }
-            else{
-                answer = "Ошибка в переводе: \(response.result.error)"
+            else {
+                print(response.error)
+                failure()
             }
         }
-        return answer
     }
-
 }
