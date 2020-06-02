@@ -192,6 +192,95 @@ class UserService {
         }
     }
     
+    func getHistory(uid: String, success: @escaping (_ history: [HistoryItem]) -> Void, failure: @escaping () -> Void){
+        var history = [HistoryItem]()
+        
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters = [
+                   "UserId": currentUser.id
+                   ]
+        let url = URL + "user/getHistory"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        let historyJSON : JSON = JSON(response.result.value!)
+                        print("история загружена!")
+                        if historyJSON.count > 0 {
+                            for n in 0...historyJSON.count-1 {
+                                let id = (historyJSON[n]["id"].string!)
+                                let date = (historyJSON[n]["date"].string!)
+                                let time = (historyJSON[n]["time"].string!)
+                                let userId = (historyJSON[n]["userId"].string!)
+                                let accountNumber = (historyJSON[n]["accNumber"].string!)
+                                let name = (historyJSON[n]["name"].string!)
+                                let destination = (historyJSON[n]["destination"].string != nil ? historyJSON[n]["destination"].string! : "")
+                                let sum = (historyJSON[n]["sum"].int64!)
+                                let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, accountNumber: accountNumber, name: name, destination: destination, sum:  sum)
+                                history.append(historyItem)
+                            }
+                        }
+                        success(history)
+                    }
+                    else {
+                        print(status)
+                        failure()
+                    }
+                }
+                else {
+                    print(response.error)
+                    failure()
+            }
+        }
+    }
+    
+    func getHistoryWithDates(uid: String, date1: String, date2: String, success: @escaping (_ history: [HistoryItem]) -> Void, failure: @escaping () -> Void){
+        var history = [HistoryItem]()
+        
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters = [ "id": currentUser.id,
+                       "Date1": date1,
+                        "Date2": date2
+                    ]
+        let url = URL + "user/getHistoryWithDate"
+        
+        
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        let historyJSON : JSON = JSON(response.result.value!)
+                        print("история загружена!")
+                        if historyJSON.count > 0 {
+                            for n in 0...historyJSON.count-1 {
+                                let id = (historyJSON[n]["id"].string!)
+                                let date = (historyJSON[n]["date"].string!)
+                                let time = (historyJSON[n]["time"].string!)
+                                let userId = (historyJSON[n]["userId"].string!)
+                                let accountNumber = (historyJSON[n]["accNumber"].string!)
+                                let name = (historyJSON[n]["name"].string!)
+                                let destination = (historyJSON[n]["destination"].string != nil ? historyJSON[n]["destination"].string! : "")
+                                let sum = (historyJSON[n]["sum"].int64!)
+                                let historyItem = HistoryItem(id: id, date: date, time: time, userId: userId, accountNumber: accountNumber, name: name, destination: destination, sum:  sum)
+                                history.append(historyItem)
+                            }
+                        }
+                        success(history)
+                    }
+                    else {
+                        print(status)
+                        failure()
+                    }
+                }
+                else {
+                    print(response.error)
+                    failure()
+            }
+        }
+    }
+    
     // to be continued
     func getAllInfo(uid: UUID) -> User{
         return User()
