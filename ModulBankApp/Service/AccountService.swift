@@ -139,4 +139,65 @@ class AccountService {
             }
         }
     }
+    
+    func payment(name: String, email: String, sum: Int64, success: @escaping () -> Void, failure: @escaping () -> Void){
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "AccId": chosenAcc.id,
+             "Name": name,
+             "Destination": email,
+             "Sum": sum
+            ]
+        let url = URL + "account/payment"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        print("платеж совершен!")
+                        chosenAcc.balance = chosenAcc.balance - sum
+                        currentUserAccounts = [Account]()
+                        self.userService.getAccounts(uid: currentUser.id, success: {
+                            success()
+                        }) {
+                            failure()
+                        }
+                    }
+                    else {
+                        print(status)
+                       failure()
+                    }
+                }
+                else {
+                    print(response.error)
+                    failure()
+                }
+        }
+    }
+    
+    func saveToSamples(name: String, email: String, sum: Int64, success: @escaping () -> Void, failure: @escaping () -> Void){
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "AccId": chosenAcc.id,
+             "Name": name,
+             "Destination": email,
+             "Sum": sum
+            ]
+        let url = URL + "account/saveToSamples"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                if status == 200{
+                    success()
+                    
+                    }
+                else {
+                    print(response.error)
+                    failure()
+                        
+                    }
+            }
+        }
+    }
 }

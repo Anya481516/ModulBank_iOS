@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-
 
 class PayViewController: UIViewController, SampleDelegate {
     
@@ -19,7 +16,6 @@ class PayViewController: UIViewController, SampleDelegate {
         placeToLabel.text = email
         newBalanceLabel.text = "\(chosenAcc.balance - sum) P"
     }
-    
 
     //MARK:- IBOutlets:
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,17 +25,10 @@ class PayViewController: UIViewController, SampleDelegate {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton!
     
-    
+    let accountService = AccountService()
     
     var accounts = [Int64]()
-       var balances = [Int]()
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
+    var balances = [Int]()
     
     //MARK:- didLoad:
     override func viewDidLoad() {
@@ -67,69 +56,12 @@ class PayViewController: UIViewController, SampleDelegate {
         if let sum = Int64(sumTextField.text!){
             if let name = nameTextField.text{
                 if let email = placeToLabel.text{
-                    let headers = ["Authorization": "Bearer " + token]
-                    let parameters: [String: Any] = [
-                        "AccId": chosenAcc.id,
-                         "Name": name,
-                         "Destination": email,
-                         "Sum": sum
-                        ]
-                    let url = URL + "account/payment"
-                    
-                    self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-                        response in
-                            if let status = response.response?.statusCode {
-                                if status == 200{
-                                    print("платеж совершен!")
-                                    chosenAcc.balance = chosenAcc.balance - sum
-                                    currentUserAccounts = [Account]()
-                                    let parameters2: [String: Any] = [
-                                               "UserId": currentUser.id
-                                               ]
-                                    let url2 = URL + "user/getAccounts"
-                                    
-                                    self.sessionManager.request(url2, method: .post, parameters: parameters2, encoding: JSONEncoding.default, headers: headers).responseJSON{
-                                        response in
-                                            if let status = response.response?.statusCode {
-                                                if status == 200{
-                                                    let accountsJSON : JSON = JSON(response.result.value!)
-                                                    print("счетазагружены")
-                                                    var accNumber: Int64 = 123
-                                                    for n in 0...accountsJSON.count-1 {
-                                                        accNumber = (accountsJSON[n]["accNumber"].int64!)
-                                                        let accBalance = (accountsJSON[n]["balance"].int64!)
-                                                        let accId = accountsJSON[n]["id"].string!
-                                                        let uId = accountsJSON[n]["userId"].string!
-                                                        let acc = Account(id: accId, userId: uId, number: accNumber, balance: accBalance)
-                                                        currentUserAccounts.append(acc)
-                                                    }
-                                                    print(currentUserAccounts[0].id, currentUserAccounts[0].balance, currentUserAccounts[0].number, currentUserAccounts[0].userId)
-                                                }
-                                                else {
-                                                    //self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
-                                                    print(status)
-                                                   
-                                                }
-                                            }
-                                            //}
-                                            else {
-                                            print(response.error)
-                                            print(currentUser.id)
-                                        }
-                                    }
-                                    self.dismiss(animated: true, completion: nil)
-                                }
-                                else {
-                                    self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при проведении платежа, пожалуйста, попробуйте снова", actionTitle: "Ок")
-                                    print(status)
-                                   
-                                }
-                            }
-                            //}
-                            else {
-                            print(response.error)
-                            print(currentUser.id)
+                    accountService.payment(name: name, email: email, sum: sum, success: {
+                        self.showAlertWithAction(alertTitle: "Успех", alertMessage: "Платеж выполнен", actionTitle: "Ок") {
+                            self.dismiss(animated: true, completion: nil)
                         }
+                    }) {
+                        self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при проведении платежа, пожалуйста, попробуйте снова", actionTitle: "Ок")
                     }
                 }
             }
@@ -140,27 +72,11 @@ class PayViewController: UIViewController, SampleDelegate {
         if let sum = Int64(sumTextField.text!){
         if let name = nameTextField.text{
             if let email = placeToLabel.text{
-                let headers = ["Authorization": "Bearer " + token]
-                let parameters: [String: Any] = [
-                    "AccId": chosenAcc.id,
-                     "Name": name,
-                     "Destination": email,
-                     "Sum": sum
-                    ]
-                let url = URL + "account/saveToSamples"
-                
-                self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-                response in
-                    if let status = response.response?.statusCode {
-                    if status == 200{
-                        self.showAlert(alertTitle: "Готово", alertMessage: "Ваш шаблон успешно сохранен!", actionTitle: "Ок")
-                        }
-                    else {
-                         print(response.error)
-                            self.showAlert(alertTitle: "Упс!", alertMessage: "Что-то не так с шаблоном!", actionTitle: "Ок =(")
-                        }
+                accountService.saveToSamples(name: name, email: email, sum: sum, success: {
+                    self.showAlert(alertTitle: "Готово", alertMessage: "Ваш шаблон успешно сохранен!", actionTitle: "Ок")
+                }) {
+                    self.showAlert(alertTitle: "Упс!", alertMessage: "Что-то не так с шаблоном!", actionTitle: "Ок =(")
                 }
-            }
             }
         }
     }

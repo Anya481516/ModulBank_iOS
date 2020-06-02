@@ -15,6 +15,8 @@ class OpenNewAccountViewController: UIViewController {
     //MARK:- IBOutlets:
     @IBOutlet weak var balanceTextFiewl: UITextField!
     @IBOutlet var mainView: UIView!
+    
+    let accountService = AccountService()
 
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {

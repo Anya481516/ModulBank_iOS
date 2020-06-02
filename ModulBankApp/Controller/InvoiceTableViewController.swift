@@ -21,6 +21,8 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
     var parameters: [String: Any]!
     var url2: String!
     
+    let userService = UserService()
+    
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
             return ServerTrustPolicy.disableEvaluation

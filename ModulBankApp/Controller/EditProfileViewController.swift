@@ -20,6 +20,8 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet var mainView: UIView!
     
+    let userService = UserService()
+    
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
             return ServerTrustPolicy.disableEvaluation

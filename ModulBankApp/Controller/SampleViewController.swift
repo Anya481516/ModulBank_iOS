@@ -23,6 +23,8 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var samples = [SampleItem]()
     
+    let userService = UserService()
+    
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
             return ServerTrustPolicy.disableEvaluation

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 protocol HistoryDelegate {
     //func (name: String, email: String, sum: Int64)
@@ -37,11 +35,7 @@ class DateChooseViewController: UIViewController {
         let date1 = dateFormatter.string(from: date1Picker.date)
         let date2 = dateFormatter.string(from: date2Picker.date)
         
-        //let date1 = date1Picker.date
-        //let date3 = date2Picker.date
-        
         delegate?.reloadTableData(date1: date1, date2: date2)
-        
         
         self.dismiss(animated: true, completion: nil)
     }
