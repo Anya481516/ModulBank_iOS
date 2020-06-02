@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class EditProfileViewController: UIViewController {
 
@@ -21,14 +19,6 @@ class EditProfileViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     
     let userService = UserService()
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- didLoad:
     override func viewDidLoad() {
@@ -54,38 +44,15 @@ class EditProfileViewController: UIViewController {
     @IBAction func changePhotoButtonPressed(_ sender: Any) {
     }
     @IBAction func deleteUserButtonPressed(_ sender: Any) {
-        let headers = ["Authorization": "Bearer " + token]
-        let parameters: [String: Any] = [
-            "UserId": currentUser.id
-            ]
-        let url = URL + "user/delete"
+       
         
         let alert = UIAlertController(title: "Удаление!", message: "Вы уверенны что хотите удалить ваш аккаунт?", preferredStyle: .alert)
         let action = UIAlertAction(title: "Да", style: .default) { (UIAlertAction) in
-            print(currentUser.id)
-            self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
-                response in
-                    if let status = response.response?.statusCode {
-                        if status == 200{
-                            print("Ваш аккаунт был успешно удален")
-                               //print(value)
-                               //self.showAlert(alertTitle: "Мы будем скучать!", alertMessage: "Ваш аккаунт был успешно удален", actionTitle: "Ок")
-                            self.clearHistory()
-                            
-                            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                               
-                        }
-                        else {
-                            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при удалении пользователя, пожалуйста, попробуйте снова", actionTitle: "Ок")
-                            print(status)
-                           
-                        }
-                    }
-                    //}
-                    else {
-                    print(response.error)
-                    print(currentUser.id)
-                }
+            self.userService.delete(uid: currentUser.id, success: {
+                self.clearHistory()
+                self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            }) {
+                self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при удалении пользователя, пожалуйста, попробуйте снова", actionTitle: "Ок")
             }
         }
         let actionYes = UIAlertAction(title:"Нет", style: .cancel) { (UIAlertAction) in

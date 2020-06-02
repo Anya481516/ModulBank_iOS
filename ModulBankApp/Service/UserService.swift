@@ -245,8 +245,6 @@ class UserService {
                     ]
         let url = URL + "user/getHistoryWithDate"
         
-        
-        
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
                 if let status = response.response?.statusCode {
@@ -277,6 +275,32 @@ class UserService {
                 else {
                     print(response.error)
                     failure()
+            }
+        }
+    }
+    
+    func delete(uid: String, success: @escaping () -> Void, failure: @escaping () -> Void){
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "UserId": uid
+            ]
+        let url = URL + "user/delete"
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+            response in
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        print("Ваш аккаунт был успешно удален")
+                        success()
+                    }
+                    else {
+                        print(status)
+                        failure()
+                    }
+                }
+                else {
+                print(response.error)
+                print(currentUser.id)
             }
         }
     }
