@@ -1726,7 +1726,7 @@
                                                 <connections>
                                                     <action selector="depositButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="xGa-dL-wpd"/>
                                                     <action selector="makeDepositButtonPressed:" destination="tqX-vG-upT" eventType="touchUpInside" id="bxB-kM-JFf"/>
-                                                    <segue destination="tqX-vG-upT" kind="show" id="AHz-KV-QvQ"/>
+                                                    <segue destination="tqX-vG-upT" kind="show" identifier="fromDetailsToDeposit" id="AHz-KV-QvQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RE2-pd-Xsf" userLabel="Transfer Button">
@@ -1745,7 +1745,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="transferButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="lDb-4B-0ia"/>
-                                                    <segue destination="WV6-fh-gGt" kind="show" id="dfe-F7-TLE"/>
+                                                    <segue destination="WV6-fh-gGt" kind="show" identifier="fromDetailsToTransfer" id="dfe-F7-TLE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXO-OU-sKu" userLabel="Payment Button">
@@ -1764,7 +1764,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="paymentButtonPressed:" destination="gIZ-rP-YU0" eventType="touchUpInside" id="dC2-dE-bt8"/>
-                                                    <segue destination="bdo-R8-krN" kind="show" id="pue-yl-BW9"/>
+                                                    <segue destination="bdo-R8-krN" kind="show" identifier="fromDetailsToPaymenr" id="pue-yl-BW9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1830,7 +1830,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eJB-GB-0Kd"/>
+        <segue reference="dfe-F7-TLE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ProfilePic" width="640" height="640"/>

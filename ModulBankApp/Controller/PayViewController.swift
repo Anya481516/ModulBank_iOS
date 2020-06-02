@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PaymentDelegate {
+    func updateBalance(balance: Int64)
+}
+
 class PayViewController: UIViewController, SampleDelegate {
     
     func fillInfo(name: String, email: String, sum: Int64) {
@@ -24,6 +28,7 @@ class PayViewController: UIViewController, SampleDelegate {
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton!
+    var delegate : PaymentDelegate?
     
     let accountService = AccountService()
     
@@ -58,6 +63,7 @@ class PayViewController: UIViewController, SampleDelegate {
                 if let email = placeToLabel.text{
                     accountService.payment(name: name, email: email, sum: sum, success: {
                         self.showAlertWithAction(alertTitle: "Успех", alertMessage: "Платеж выполнен", actionTitle: "Ок") {
+                            self.delegate?.updateBalance(balance: chosenAcc.balance)
                             self.dismiss(animated: true, completion: nil)
                         }
                     }) {

@@ -8,7 +8,10 @@
 
 import UIKit
 
-class AccountDetailsController: UIViewController {
+class AccountDetailsController: UIViewController, DepositDelegate, TransferDelegate, PaymentDelegate {
+    func updateBalance(balance: Int64) {
+        accountBalanceLabel.text = "\(balance) рублей"
+    }
 
     //MARK:- IBOutlets:
     @IBOutlet weak var accountNumberLabel: UILabel!
@@ -32,5 +35,15 @@ class AccountDetailsController: UIViewController {
     }
     
     //MARK:- METHODS:
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromDetailsToDeposit", let destinationVC = segue.destination as? DepositViewController {
+            destinationVC.delegate = self
+        }
+        if segue.identifier == "fromDetailsToTransfer", let destinationVC = segue.destination as? TransferViewController {
+            destinationVC.delegate = self
+        }
+        if segue.identifier == "fromDetailsToPaymenr", let destinationVC = segue.destination as? PayViewController {
+            destinationVC.delegate = self
+        }
+    }
 }

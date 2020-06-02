@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DepositDelegate {
+    func updateBalance(balance: Int64)
+}
+
 class DepositViewController: UIViewController {
 
     //MARK:- IBOutlets:
@@ -15,6 +19,7 @@ class DepositViewController: UIViewController {
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makeDepositButton: UIButton!
+    var delegate : DepositDelegate?
     
     let accountService = AccountService()
     
@@ -50,6 +55,7 @@ class DepositViewController: UIViewController {
         if let sum = Int64(sumTextFiewld.text!){
             accountService.deposit(uid: currentUser.id, accId: chosenAcc.id, sum: sum, success: {
                 self.showAlertWithAction(alertTitle: "Успех!", alertMessage: "Платеж проведен!", actionTitle: "Ок") {
+                    self.delegate?.updateBalance(balance: chosenAcc.balance)
                     self.dismiss(animated: true, completion: nil)
                 }
             }) {

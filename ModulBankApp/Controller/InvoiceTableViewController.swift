@@ -89,9 +89,9 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-              if segue.identifier == "fromHistoryToChoosePeriod", let destinationVC = segue.destination as? DateChooseViewController {
-                  destinationVC.delegate = self
-              }
-          }
+        if segue.identifier == "fromHistoryToChoosePeriod", let destinationVC = segue.destination as? DateChooseViewController {
+            destinationVC.delegate = self
+        }
+    }
 }
 

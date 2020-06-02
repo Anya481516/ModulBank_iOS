@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+
+protocol TransferDelegate {
+    func updateBalance(balance: Int64)
+}
 
 class TransferViewController: UIViewController {
 
@@ -18,6 +20,7 @@ class TransferViewController: UIViewController {
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makeTransferButton: UIButton!
+    var delegate : TransferDelegate?
     
     let accountService = AccountService()
     
@@ -52,6 +55,7 @@ class TransferViewController: UIViewController {
                 // transfer
                 accountService.transfer(sendingAccId: chosenAcc.id, receivingAccNumber: rAcc, sum: sum, success: {
                     self.showAlertWithAction(alertTitle: "Успех", alertMessage: "Перевод выполнен", actionTitle: "Ок") {
+                        self.delegate?.updateBalance(balance: chosenAcc.balance)
                         self.dismiss(animated: true, completion: nil)
                     }
                 }) {
@@ -80,5 +84,6 @@ class TransferViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
+    
 }
 
