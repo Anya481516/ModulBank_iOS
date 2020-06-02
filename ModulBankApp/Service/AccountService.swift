@@ -12,6 +12,8 @@ import SwiftyJSON
 
 class AccountService {
     
+    let userService = UserService()
+    
     init() {
         
     }
@@ -70,24 +72,38 @@ class AccountService {
         return account
     }
     
-    func deposit(accId: UUID, sum: Int32) -> String{
-        var answer = "some error"
+    func deposit(uid:String, accId: String, sum: Int64, success: @escaping () -> Void, failure: @escaping () -> Void){
+       let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
-            "AccId": accId,
+            "AccId": chosenAcc.id,
             "Sum": sum
             ]
-        let url = "https://localhost:44334/account/deposit"
+        let url = URL + "account/deposit"
         
-        Alamofire.request(url, method: .post, parameters: parameters).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-            if response.result.isSuccess{
-                answer = "Ваш счет был успешно пополнен!"
-            }
-            else{
-                answer = "Ошибка в пополнении счета: \(response.result.error)"
+                if let status = response.response?.statusCode {
+                    if status == 200{
+                        print("счет пополнен!")
+                        chosenAcc.balance = chosenAcc.balance + sum
+                        currentUserAccounts = [Account]()
+                        // счета снова загрузить
+                        self.userService.getAccounts(uid: uid, success: {
+                            success()
+                        }) {
+                            failure()
+                        }
+                    }
+                    else {
+                        failure()
+                        print(status)
+                    }
+                }
+                else {
+                print(response.error)
+                failure()
             }
         }
-        return answer
     }
     
     func transfer(sendingAccId: UUID, receivingAccId: UUID, sum: Int32) -> String{
