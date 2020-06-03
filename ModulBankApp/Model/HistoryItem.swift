@@ -8,21 +8,20 @@
 
 import Foundation
 
-class HistoryItem {
-    init(){
-        
-    }
-    init(id: String, date: String, time: String, userId: String, accountNumber: String, name: String, destination: String, sum: Int64){
-        self.id = id
-        self.date = date
-        self.time = time
-        self.userId = userId
-        self.accountNumber = accountNumber
-        self.name = name
-        self.destination = destination
-        self.sum = sum
-    }
-    
+struct HistoryItem : Codable {
+//    init(){
+//
+//    }
+//    init(id: String, date: String, time: String, userId: String, accountNumber: String, name: String, destination: String, sum: Int64){
+//        self.id = id
+//        self.date = date
+//        self.time = time
+//        self.userId = userId
+//        self.accountNumber = accountNumber
+//        self.name = name
+//        self.destination = destination
+//        self.sum = sum
+//    }
     var id = String()
     var date = String()
     var time = String()

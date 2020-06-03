@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 var currentUser = User()
+var currentUserInfo = UserInfo()
 var token = ""
 var chosenAcc = Account()
 var URL = "https://192.168.1.16:44334/"

@@ -55,6 +55,7 @@
 		5DCCA6BC247F0EBC00A56E5B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BB247F0EBC00A56E5B /* UserService.swift */; };
 		5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BD247F295A00A56E5B /* AccountService.swift */; };
 		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
+		5DEF9B3F2487A9C1002C1884 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */; };
 		5DF6323B2481A7940043A2FD /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */; };
 		5DF6323D2481BF8D0043A2FD /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */; };
 		9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */; };
@@ -111,6 +112,7 @@
 		5DCCA6BB247F0EBC00A56E5B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5DCCA6BD247F295A00A56E5B /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
+		5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.debug.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				5D1A3B2C247D32ED00D3FECD /* CustomExampleCell.swift */,
 				5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */,
 				5DB91E19248426D400A58E54 /* SampleItem.swift */,
+				5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				5DC3F5B724780750003A4AF1 /* LoginViewController.swift in Sources */,
 				5D301EF424794365004472CF /* InvoiceTableViewController.swift in Sources */,
 				5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */,
+				5DEF9B3F2487A9C1002C1884 /* UserInfo.swift in Sources */,
 				5DC3F5AF247806F5003A4AF1 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

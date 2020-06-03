@@ -75,7 +75,7 @@ class UserService {
         }
     }
     
-    func login(email: String, password: String,  success: @escaping () -> Void, failure: @escaping () -> Void) {
+    func login(email: String, password: String,  success: @escaping (UserInfo?) -> Void, failure: @escaping () -> Void) {
         let parameters: [String: Any] = [
             "Email": email,
             "Password": password
@@ -92,14 +92,13 @@ class UserService {
                         print("Вход успешно выполнен!")
                         print(response.result.description)
                         print(token)
-                        
-                        // getting the user
-                        self.getByEmail(email: email, success: {
-                            success()
+                    
+                        self.getByEmail(email: email, success: { (userInfo) in
+                            let user = userInfo
+                            success(user)
                         }) {
                             failure()
                         }
-
                     }
                 }
             }
@@ -112,7 +111,7 @@ class UserService {
         
     }
     
-    func getByEmail(email: String, success: @escaping () -> Void, failure: @escaping () -> Void) {
+    func getByEmail(email: String, success: @escaping (UserInfo?) -> Void, failure: @escaping () -> Void) {
         let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
             "Email": email
@@ -121,28 +120,15 @@ class UserService {
         
         self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-            if response.result.isSuccess{
-                if let status = response.response?.statusCode {
-                    if status == 200 {
-                        print( "We got the user!!!")
-                        let userJSON : JSON = JSON(response.result.value!)
-                        currentUser.id = userJSON["id"].string!
-                        currentUser.email = userJSON["email"].string!
-                        currentUser.passwordHash = userJSON["passwordHash"].string!
-                        currentUser.passwordSalt = userJSON["salt"].string!
-                        currentUser.username = userJSON["username"].string!
-                        print(userJSON)
-                        print(currentUser.id)
-                        success()
-                    }
-                    else {
-                        failure()
-                    }
-                }
-            }
-            else{
+            guard let data = response.data else { return }
+            do {
+                print(data.description)
+                let decoder = JSONDecoder()
+                let userInfo = try decoder.decode(UserInfo.self, from: data)
+                success(userInfo)
+            } catch let error {
+                print("Ошибка в получении пользователя: \(error)")
                 failure()
-                print("Ошибка в получении пользователя: \(response.result.error)")
             }
         }
     }

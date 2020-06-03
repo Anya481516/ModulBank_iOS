@@ -37,7 +37,8 @@ class LoginViewController: UIViewController {
         else{
             if let email = emailTextField.text{
                 if let password = passwordTextField.text{
-                    userService.login(email: email, password: password, success: {
+                    userService.login(email: email, password: password, success: { user in
+                        currentUserInfo = user!
                         self.gotoAnotherView(identifier: "TabBarController", sender: self)
                     }) {
                         self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при авторизации пользователя, пожалуйста попробуйте снова", actionTitle: "Ок")

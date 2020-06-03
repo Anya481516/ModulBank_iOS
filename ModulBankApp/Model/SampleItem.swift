@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SampleItem {
+class SampleItem : Decodable {
     init(){
         
     }

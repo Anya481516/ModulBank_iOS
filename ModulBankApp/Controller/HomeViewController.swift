@@ -55,8 +55,8 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
+        usernameLabel.text = currentUserInfo.username
+        emailLabel.text = currentUserInfo.email
         
         userService.getTotalBalance(uid: currentUser.id, success: { (balance) in
             self.currentTotalBalance = balance
