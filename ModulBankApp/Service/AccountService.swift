@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 fileprivate extension AccountService {
     enum Routes {
@@ -46,32 +45,26 @@ class AccountService {
     func openNew(uid:String, balance: Int64, success: @escaping () -> Void, failure: @escaping () -> Void) {
         let headers = ["Authorization": "Bearer " + token]
         let parameters: [String: Any] = [
-            "UserId": currentUser.id,
+            "UserId": uid,
             "Balance": balance
             ]
         let url = URL + Routes.openNew.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-                if let status = response.response?.statusCode {
-                    if status == 200{
-                        print("Аккаунт создан")
-                        currentUserAccounts = [Account]()
-//                        self.userService.getAccounts(uid: uid, success: {
-//                            success()
-//                        }) {
-//                            failure()
-//                        }
-                    }
-                    else {
-                        print(status)
-                        failure()
-                    }
+            if let status = response.response?.statusCode {
+                if status == 200{
+                    print("Аккаунт создан")
+                    success()
                 }
-                //}
                 else {
-                    print(response.error)
+                    print(status)
                     failure()
+                }
+            }
+            else {
+                print(response.error)
+                failure()
             }
         }
     }
@@ -86,24 +79,18 @@ class AccountService {
         
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-                if let status = response.response?.statusCode {
-                    if status == 200{
-                        print("счет пополнен!")
-                        chosenAcc.balance = chosenAcc.balance + sum
-                        currentUserAccounts = [Account]()
-                        // счета снова загрузить
-//                        self.userService.getAccounts(uid: uid, success: {
-//                            success()
-//                        }) {
-//                            failure()
-//                        }
-                    }
-                    else {
-                        failure()
-                        print(status)
-                    }
+            if let status = response.response?.statusCode {
+                if status == 200{
+                    print("счет пополнен!")
+                    chosenAcc.balance = chosenAcc.balance + sum
+                    success()
                 }
                 else {
+                    failure()
+                    print(status)
+                }
+            }
+            else {
                 print(response.error)
                 failure()
             }
@@ -125,12 +112,7 @@ class AccountService {
                 if status == 200{
                     print("перевод выполнен!")
                     chosenAcc.balance = sum
-                    // get users again
-//                    self.userService.getAccounts(uid: currentUser.id, success: {
-//                        success()
-//                    }) {
-//                        failure()
-//                    }
+                    success()
                 }
                 else {
                     print(response.error)
@@ -156,26 +138,22 @@ class AccountService {
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-                if let status = response.response?.statusCode {
-                    if status == 200{
-                        print("платеж совершен!")
-                        chosenAcc.balance = chosenAcc.balance - sum
-                        currentUserAccounts = [Account]()
-//                        self.userService.getAccounts(uid: currentUser.id, success: {
-//                            success()
-//                        }) {
-//                            failure()
-//                        }
-                    }
-                    else {
-                        print(status)
-                       failure()
-                    }
+            if let status = response.response?.statusCode {
+                if status == 200{
+                    print("платеж совершен!")
+                    chosenAcc.balance = chosenAcc.balance - sum
+                    currentUserAccounts = [Account]()
+                    success()
                 }
                 else {
-                    print(response.error)
+                    print(status)
                     failure()
                 }
+            }
+            else {
+                print(response.error)
+                failure()
+            }
         }
     }
     
@@ -191,16 +169,14 @@ class AccountService {
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
-                if let status = response.response?.statusCode {
+            if let status = response.response?.statusCode {
                 if status == 200{
                     success()
-                    
-                    }
+                }
                 else {
                     print(response.error)
                     failure()
-                        
-                    }
+                }
             }
         }
     }

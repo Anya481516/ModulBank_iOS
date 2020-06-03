@@ -27,8 +27,8 @@ class EditProfileViewController: UIViewController {
         
         self.emailTextField.keyboardType = UIKeyboardType.emailAddress
         
-        emailTextField.text = currentUser.email
-        usernameTextField.text = currentUser.username
+        emailTextField.text = currentUserInfo.email
+        usernameTextField.text = currentUserInfo.username
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -48,7 +48,7 @@ class EditProfileViewController: UIViewController {
         
         let alert = UIAlertController(title: "Удаление!", message: "Вы уверенны что хотите удалить ваш аккаунт?", preferredStyle: .alert)
         let action = UIAlertAction(title: "Да", style: .default) { (UIAlertAction) in
-            self.userService.delete(uid: currentUser.id, success: {
+            self.userService.delete(uid: currentUserInfo.id, success: {
                 self.clearHistory()
                 self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
             }) {
@@ -96,6 +96,6 @@ class EditProfileViewController: UIViewController {
     func clearHistory(){
         token = ""
         chosenAcc = Account()
-        currentUser = User()
+        currentUserInfo = UserInfo()
     }
 }

@@ -86,7 +86,7 @@ class SignupViewController: UIViewController {
         password1TextField.text = ""
         password2TextField.text = ""
         token = ""
-        currentUser = User()
+        currentUserInfo = UserInfo()
         chosenAcc = Account()
     }
     

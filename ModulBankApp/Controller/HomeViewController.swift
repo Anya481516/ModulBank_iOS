@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Выход", message: "Вы уверенны что хотите выйти?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Да", style: .default) { (UIAlertAction) in
-            currentUser = User()
+            currentUserInfo = UserInfo()
             token = ""
             self.gotoAnotherView(identifier: "LoginViewController")
         }

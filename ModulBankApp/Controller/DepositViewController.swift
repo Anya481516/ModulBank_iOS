@@ -53,7 +53,7 @@ class DepositViewController: UIViewController {
     
     @IBAction func makeDepositButtonPressed(_ sender: UIButton) {
         if let sum = Int64(sumTextFiewld.text!){
-            accountService.deposit(uid: currentUser.id, accId: chosenAcc.id, sum: sum, success: {
+            accountService.deposit(uid: currentUserInfo.id, accId: chosenAcc.id, sum: sum, success: {
                 self.showAlertWithAction(alertTitle: "Успех!", alertMessage: "Платеж проведен!", actionTitle: "Ок") {
                     self.delegate?.updateBalance(balance: chosenAcc.balance)
                     self.dismiss(animated: true, completion: nil)

@@ -232,7 +232,7 @@ class UserService {
                 }
                 else {
                 print(response.error)
-                print(currentUser.id)
+                print(currentUserInfo.id)
             }
         }
     }

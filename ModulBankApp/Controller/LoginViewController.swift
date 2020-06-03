@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         emailTextField.text = "dsas@gmail.com"
         passwordTextField.text = "dsas"
         token = ""
-        currentUser = User()
+        currentUserInfo = UserInfo()
         chosenAcc = Account()
     }
     

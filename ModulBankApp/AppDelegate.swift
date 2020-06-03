@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-var currentUser = User()
+//var currentUser = User()
 var currentUserInfo = UserInfo()
 var token = ""
 var chosenAcc = Account()

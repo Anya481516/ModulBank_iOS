@@ -35,7 +35,7 @@ class OpenNewAccountViewController: UIViewController {
     @IBAction func openNewAccountButtonPressed(_ sender: Any) {
         if let balance = Int64(balanceTextFiewl.text!) {
             
-            accountService.openNew(uid: currentUser.id, balance: balance, success: {
+            accountService.openNew(uid: currentUserInfo.id, balance: balance, success: {
                 self.dismiss(animated: true, completion: nil)
             }) {
                  self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при создании счета, пожалуйста, попробуйте снова", actionTitle: "Ок")
