@@ -9,9 +9,6 @@
 import UIKit
 
 class AccountDetailsController: UIViewController, DepositDelegate, TransferDelegate, PaymentDelegate {
-    func updateBalance(balance: Int64) {
-        accountBalanceLabel.text = "\(balance) рублей"
-    }
 
     //MARK:- IBOutlets:
     @IBOutlet weak var accountNumberLabel: UILabel!
@@ -23,7 +20,6 @@ class AccountDetailsController: UIViewController, DepositDelegate, TransferDeleg
         
         accountNumberLabel.text = String(chosenAcc.accNumber)
         accountBalanceLabel.text = "\(chosenAcc.balance) рублей"
-        // Do any additional setup after loading the view.
     }
     
     //MARK:- IBActions:
@@ -45,5 +41,9 @@ class AccountDetailsController: UIViewController, DepositDelegate, TransferDeleg
         if segue.identifier == "fromDetailsToPaymenr", let destinationVC = segue.destination as? PayViewController {
             destinationVC.delegate = self
         }
+    }
+    
+    func updateBalance(balance: Int64) {
+        accountBalanceLabel.text = "\(balance) рублей"
     }
 }

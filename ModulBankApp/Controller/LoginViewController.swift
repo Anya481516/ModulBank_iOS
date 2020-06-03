@@ -10,11 +10,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    let userService = UserService()
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet var mainView: UIView!
-    let userService = UserService()
     
     //MARK:- didLoad:
     override func viewDidLoad() {

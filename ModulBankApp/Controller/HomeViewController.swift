@@ -10,13 +10,15 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    let userService = UserService()
+    var currentTotalBalance: Decimal = 0
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var totalBalanceLabel: UILabel!
-    
-    let userService = UserService()
-    var currentTotalBalance: Decimal = 0
+
     
     //MARK:- didLoad:
     override func viewDidLoad() {

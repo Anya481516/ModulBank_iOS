@@ -14,6 +14,10 @@ protocol PaymentDelegate {
 
 class PayViewController: UIViewController, SampleDelegate {
     
+    //MARK:- PROPERTIES:
+    var delegate : PaymentDelegate?
+    let accountService = AccountService()
+    
     func fillInfo(name: String, email: String, sum: Int64) {
         sumTextField.text = "\(sum)"
         nameTextField.text = name
@@ -28,12 +32,7 @@ class PayViewController: UIViewController, SampleDelegate {
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makePaymentButton: UIButton!
-    var delegate : PaymentDelegate?
     
-    let accountService = AccountService()
-    
-    var accounts = [Int64]()
-    var balances = [Int]()
     
     //MARK:- didLoad:
     override func viewDidLoad() {

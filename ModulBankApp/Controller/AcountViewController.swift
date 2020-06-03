@@ -10,15 +10,16 @@ import UIKit
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK:- IBOutlets:
-    @IBOutlet weak var tableView: UITableView!
+    //MARK:- PROPERTIES:
     var refreshControl = UIRefreshControl()
     let userService = UserService()
+    
+    //MARK:- IBOutlets:
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         tableView.separatorStyle = .none
         tableView.delegate = self
@@ -27,14 +28,10 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
-        // Do any additional setup after loading the view.
-        // TODO: define the accounts
-
     }
     
     //MARK:- IBActions:
 
-    
     //MARK:- METHODS:
     
     @objc func refresh(_ sender: AnyObject) {
@@ -49,7 +46,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUserAccounts.count
-       }
+    }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customAccountCell", for: indexPath) as! CustomAccountCell
@@ -75,11 +72,5 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         }) {
             self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
         }
-        
-//        userService.getAccounts(uid: currentUser.id, success: {
-//            self.tableView.reloadData()
-//        }) {
-//            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
-//        }
     }
 }

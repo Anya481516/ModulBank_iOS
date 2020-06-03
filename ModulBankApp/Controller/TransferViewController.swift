@@ -14,18 +14,16 @@ protocol TransferDelegate {
 
 class TransferViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    var delegate : TransferDelegate?
+    let accountService = AccountService()
+    
     //MARK:- IBOutlets
     @IBOutlet weak var accountToLabel: UITextField!
     @IBOutlet weak var sumTextField: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makeTransferButton: UIButton!
-    var delegate : TransferDelegate?
-    
-    let accountService = AccountService()
-    
-    var accounts = [Int64]()
-    var balances = [Int]()
     
     //MARK:- didLoad:
     override func viewDidLoad() {

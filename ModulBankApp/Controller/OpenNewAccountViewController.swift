@@ -10,16 +10,16 @@ import  UIKit
 
 class OpenNewAccountViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    let accountService = AccountService()
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var balanceTextFiewl: UITextField!
     @IBOutlet var mainView: UIView!
     
-    let accountService = AccountService()
-    
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(outOfKeyBoardTapped))
         mainView.addGestureRecognizer(tapGesture)
@@ -27,8 +27,6 @@ class OpenNewAccountViewController: UIViewController {
         self.balanceTextFiewl.keyboardType = UIKeyboardType.numberPad
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-       
     }
     
     //MARK:- IBActions:
@@ -45,7 +43,6 @@ class OpenNewAccountViewController: UIViewController {
     
     //MARK:- METHODS:
     
-
     @objc func outOfKeyBoardTapped(){
         self.view.endEditing(true)
     }

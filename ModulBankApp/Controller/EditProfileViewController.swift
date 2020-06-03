@@ -10,6 +10,9 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    let userService = UserService()
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -18,12 +21,9 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet var mainView: UIView!
     
-    let userService = UserService()
-    
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.emailTextField.keyboardType = UIKeyboardType.emailAddress
         
@@ -65,7 +65,6 @@ class EditProfileViewController: UIViewController {
     
     //MARK:- METHODS:
 
-    
     // with the keyboard
     @objc func outOfKeyBoardTapped(){
         self.view.endEditing(true)

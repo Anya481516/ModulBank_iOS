@@ -14,12 +14,14 @@ protocol SampleDelegate {
 
 class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    //MARK:- IBOutlets:
-    @IBOutlet weak var tableView: UITableView!
-      var refreshControl = UIRefreshControl()
+    //MARK:- PROPERTIES:
     var delegate : SampleDelegate?
     var samples = [SampleItem]()
     let userService = UserService()
+    var refreshControl = UIRefreshControl()
+    
+    //MARK:- IBOutlets:
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK:- didLoad:
     override func viewDidLoad() {

@@ -10,22 +10,17 @@ import UIKit
 
 class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HistoryDelegate {
     
-    //MARK:- IBOutlets:
-    @IBOutlet weak var tableView: UITableView!
+    //MARK:- PROPERTIES:
     var refreshControl = UIRefreshControl()
     var history = [HistoryItem]()
-    //var defaultDate: Bool!
-    var parameters: [String: Any]!
-    var url2: String!
-    
     let userService = UserService()
     
+    //MARK:- IBOutlets:
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         
         tableView.delegate = self
         tableView.dataSource = self

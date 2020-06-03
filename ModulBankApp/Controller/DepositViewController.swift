@@ -14,21 +14,20 @@ protocol DepositDelegate {
 
 class DepositViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    var delegate : DepositDelegate?
+    let accountService = AccountService()
+    var sum = Int64()
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var sumTextFiewld: UITextField!
     @IBOutlet weak var newBalanceLabel: UILabel!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var makeDepositButton: UIButton!
-    var delegate : DepositDelegate?
-    
-    let accountService = AccountService()
-    
-    var sum = Int64()
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         newBalanceLabel.text = "\(chosenAcc.balance) Р"
         

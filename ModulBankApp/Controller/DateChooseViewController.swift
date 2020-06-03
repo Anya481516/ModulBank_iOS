@@ -9,22 +9,21 @@
 import UIKit
 
 protocol HistoryDelegate {
-    //func (name: String, email: String, sum: Int64)
     func reloadTableData(date1: String, date2: String)
-    }
+}
 
 class DateChooseViewController: UIViewController {
 
+    //MARK:- PROPERTIES:
+    var delegate : HistoryDelegate?
+    
     //MARK:- IBOutlets:
     @IBOutlet weak var date1Picker: UIDatePicker!
     @IBOutlet weak var date2Picker: UIDatePicker!
-    var delegate : HistoryDelegate?
     
     //MARK:- didLoad:
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
     }
     
     //MARK:- IBActions:
