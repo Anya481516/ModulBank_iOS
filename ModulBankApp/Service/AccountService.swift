@@ -50,7 +50,7 @@ class AccountService {
             ]
         let url = URL + Routes.openNew.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             if let status = response.response?.statusCode {
                 if status == 200{
@@ -77,7 +77,7 @@ class AccountService {
             ]
         let url = URL + Routes.deposit.path
         
-        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             if let status = response.response?.statusCode {
                 if status == 200{
@@ -106,7 +106,7 @@ class AccountService {
         ]
         let url = URL + Routes.transfer_to_another_account.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
         response in
             if let status = response.response?.statusCode {
                 if status == 200{
@@ -136,7 +136,7 @@ class AccountService {
             ]
         let url = URL + Routes.payment.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             if let status = response.response?.statusCode {
                 if status == 200{
@@ -167,7 +167,7 @@ class AccountService {
             ]
         let url = URL + Routes.saveToSamples.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             if let status = response.response?.statusCode {
                 if status == 200{

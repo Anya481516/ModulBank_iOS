@@ -57,7 +57,7 @@ class UserService {
             "Password": password
             ]
         let url = URL + Routes.signup.path
-        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON{
             response in
             if let status = response.response?.statusCode {
                 if status == 200{
@@ -78,7 +78,7 @@ class UserService {
             "Password": password
             ]
         let url = URL +  Routes.login.path
-        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
+        sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON{
             response in
             guard let data = response.data else { return }
             do {
@@ -106,7 +106,7 @@ class UserService {
         ]
         let url = URL + Routes.getByEmail.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             guard let data = response.data else { return }
             do {
@@ -129,7 +129,7 @@ class UserService {
     
         let url = URL + Routes.getAccounts.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             guard let data = response.data else { return }
             do {
@@ -151,7 +151,7 @@ class UserService {
                    ]
         let url = URL + Routes.getHistory.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             guard let data = response.data else { return }
             do {
@@ -174,7 +174,7 @@ class UserService {
                     ]
         let url = URL + Routes.getHistoryWithDate.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             guard let data = response.data else { return }
             do {
@@ -195,7 +195,7 @@ class UserService {
             "UserId": uid
             ]
         let url2 = URL + Routes.getSamples.path
-        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
             
             guard let data = response.data else { return }
@@ -218,7 +218,7 @@ class UserService {
             ]
         let url = URL + Routes.delete.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
+        self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).validate().responseJSON{
             response in
                 if let status = response.response?.statusCode {
                     if status == 200{
@@ -244,7 +244,7 @@ class UserService {
             ]
         let url = URL + Routes.getTotalBalance.path
         
-        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON {
+        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).validate().responseJSON {
         response in
             
             guard let data = response.data else { return }
