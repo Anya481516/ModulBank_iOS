@@ -10,43 +10,39 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-//fileprivate extension UserService {
-//    enum Routes {
-//        case login
-//        var path: String {
-//            switch self {
-//            case .login:
-//                return "user/login"
-//            case .signup:
-//                <#code#>
-//            case .getUser:
-//                <#code#>
-//            }
-//        },
-//        case signup
-//        var path: String {
-//            switch self {
-//            case .signup:
-//                return "user/signup"
-//            }
-//        },
-//        case getUser
-//        var path: String {
-//            switch self {
-//            case .getUser:
-//                return "user/getUser"
-//            }
-//        }
-//    }
-//}
+fileprivate extension UserService {
+    enum Routes {
+        case login, signup, getUser, getByEmail, getAccounts, getHistory, getHistoryWithDate, getSamples, delete, getTotalBalance
+        var path: String {
+            switch self {
+            case .login:
+                return "user/login"
+            case .signup:
+                return "user/signup"
+            case .getUser:
+                return "user/getUser"
+            case .getByEmail:
+                return "user/getByEmail"
+            case .getAccounts:
+                return "user/getAccounts"
+            case .getHistory:
+                return "user/getHistory"
+            case .getHistoryWithDate:
+                return "user/getHistoryWithDate"
+            case .getSamples:
+                return "user/getSamples"
+            case .delete:
+                return "user/delete"
+            case .getTotalBalance:
+                return "user/getTotalBalance"
+            }
+        }
+    }
+}
 
 class UserService {
     
-    init(){
-        
-    }
-    
-    let URL = "https://192.168.1.16:44334/"
+    let URL = "https://192.168.0.100:44334/"
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
@@ -61,7 +57,7 @@ class UserService {
             "Username": username,
             "Password": password
             ]
-        let url = URL + "user/signup"
+        let url = URL + Routes.signup.path
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
             response in
             //if response.result.isSuccess{
@@ -84,7 +80,7 @@ class UserService {
             "Email": email,
             "Password": password
             ]
-        let url = URL +  "user/login"
+        let url = URL +  Routes.login.path
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON{
             response in
             if response.result.isSuccess{
@@ -121,7 +117,7 @@ class UserService {
         let parameters: [String: Any] = [
             "Email": email
         ]
-        let url = URL + "user/getByEmail"
+        let url = URL + Routes.getByEmail.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -159,7 +155,7 @@ class UserService {
             "UserId": uid
         ]
     
-        let url = URL + "user/getAccounts"
+        let url = URL + Routes.getAccounts.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -199,7 +195,7 @@ class UserService {
         let parameters = [
                    "UserId": currentUser.id
                    ]
-        let url = URL + "user/getHistory"
+        let url = URL + Routes.getHistory.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -243,7 +239,7 @@ class UserService {
                        "Date1": date1,
                         "Date2": date2
                     ]
-        let url = URL + "user/getHistoryWithDate"
+        let url = URL + Routes.getHistoryWithDate.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -285,7 +281,7 @@ class UserService {
         let parameters: [String: Any] = [
             "UserId": currentUser.id
             ]
-        let url2 = URL + "user/getSamples"
+        let url2 = URL + Routes.getSamples.path
         self.sessionManager.request(url2, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
                 if let status = response.response?.statusCode {
@@ -322,7 +318,7 @@ class UserService {
         let parameters: [String: Any] = [
             "UserId": uid
             ]
-        let url = URL + "user/delete"
+        let url = URL + Routes.delete.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -343,16 +339,30 @@ class UserService {
         }
     }
     
-    // to be continued
-    func getAllInfo(uid: UUID) -> User{
-        return User()
-    }
-    
-    func accountsNumber(uid: UUID) -> Int{
-        return 1
-    }
-    
-    func totalBalance(uid: UUID) -> Int32{
-        return 10000
+    func getTotalBalance(uid: String, success: @escaping (_ totlaBalance: Decimal) -> Void, failure: @escaping () -> Void){
+        let headers = ["Authorization": "Bearer " + token]
+        let parameters: [String: Any] = [
+            "UserId": uid
+            ]
+        let url = URL + Routes.getTotalBalance.path
+        
+        self.sessionManager.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: headers).responseJSON {
+        response in
+            if let status = response.response?.statusCode {
+                if status == 200 {
+                    print( "We got the totlaAmount!!!")
+                    let balanceJSON : JSON = JSON(response.result.value!)
+                    let balance = Decimal(string: balanceJSON.stringValue)!
+                    print(balanceJSON)
+                    success(balance)
+                }
+                else {
+                    print("SERVER ERROR")
+                    print("Ошибка в получении баланса")
+                    print(status)
+                    failure()
+                }
+            }
+        }
     }
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 protocol SampleDelegate {
     func fillInfo(name: String, email: String, sum: Int64)
@@ -20,17 +18,8 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
       var refreshControl = UIRefreshControl()
     var delegate : SampleDelegate?
-    
     var samples = [SampleItem]()
-    
     let userService = UserService()
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- didLoad:
     override func viewDidLoad() {

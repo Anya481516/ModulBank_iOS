@@ -7,18 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-   
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- IBOutlets:
     @IBOutlet weak var tableView: UITableView!

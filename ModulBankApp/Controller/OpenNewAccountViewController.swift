@@ -7,8 +7,6 @@
 //
 
 import  UIKit
-import Alamofire
-import SwiftyJSON
 
 class OpenNewAccountViewController: UIViewController {
 
@@ -17,14 +15,6 @@ class OpenNewAccountViewController: UIViewController {
     @IBOutlet var mainView: UIView!
     
     let accountService = AccountService()
-
-    
-    open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
-        open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
-            return ServerTrustPolicy.disableEvaluation
-        }
-    }
-    let sessionManager = SessionManager(delegate:SessionDelegate(), serverTrustPolicyManager:MyServerTrustPolicyManager(policies: [:]))
     
     //MARK:- didLoad:
     override func viewDidLoad() {

@@ -10,15 +10,31 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+fileprivate extension AccountService {
+    enum Routes {
+        case openNew, deposit, transfer_to_another_account, payment, saveToSamples
+        var path: String {
+            switch self {
+            case .openNew:
+                return "account/openNew"
+            case .deposit:
+                return "account/deposit"
+            case .transfer_to_another_account:
+                return "account/transfer_to_another_account"
+            case .payment:
+                return "account/payment"
+            case .saveToSamples:
+                return "account/saveToSamples"
+            }
+        }
+    }
+}
+
 class AccountService {
     
     let userService = UserService()
     
-    init() {
-        
-    }
-    
-    let URL = "https://192.168.1.16:44334/"
+    let URL = "https://192.168.0.100:44334/"
     
     open class MyServerTrustPolicyManager: ServerTrustPolicyManager {
         open override func serverTrustPolicy(forHost host: String) -> ServerTrustPolicy? {
@@ -33,7 +49,7 @@ class AccountService {
             "UserId": currentUser.id,
             "Balance": balance
             ]
-        let url = URL + "account/openNew"
+        let url = URL + Routes.openNew.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -66,7 +82,7 @@ class AccountService {
             "AccId": chosenAcc.id,
             "Sum": sum
             ]
-        let url = URL + "account/deposit"
+        let url = URL + Routes.deposit.path
         
         sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -101,7 +117,7 @@ class AccountService {
             "ReceivingAccNumber": receivingAccNumber,
             "Sum": sum
         ]
-        let url = URL + "account/transfer_to_another_account"
+        let url = URL + Routes.transfer_to_another_account.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
         response in
@@ -136,7 +152,7 @@ class AccountService {
              "Destination": email,
              "Sum": sum
             ]
-        let url = URL + "account/payment"
+        let url = URL + Routes.payment.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
@@ -171,7 +187,7 @@ class AccountService {
              "Destination": email,
              "Sum": sum
             ]
-        let url = URL + "account/saveToSamples"
+        let url = URL + Routes.saveToSamples.path
         
         self.sessionManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON{
             response in
