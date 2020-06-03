@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct HistoryItem : Codable {
+struct HistoryItem : Decodable {
 //    init(){
 //
 //    }
@@ -26,7 +26,7 @@ struct HistoryItem : Codable {
     var date = String()
     var time = String()
     var userId = String()
-    var accountNumber = String()
+    var accNumber = String()
     var name = String()
     var destination = String()
     var sum = Int64()

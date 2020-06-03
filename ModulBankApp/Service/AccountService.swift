@@ -57,11 +57,11 @@ class AccountService {
                     if status == 200{
                         print("Аккаунт создан")
                         currentUserAccounts = [Account]()
-                        self.userService.getAccounts(uid: uid, success: {
-                            success()
-                        }) {
-                            failure()
-                        }
+//                        self.userService.getAccounts(uid: uid, success: {
+//                            success()
+//                        }) {
+//                            failure()
+//                        }
                     }
                     else {
                         print(status)
@@ -92,11 +92,11 @@ class AccountService {
                         chosenAcc.balance = chosenAcc.balance + sum
                         currentUserAccounts = [Account]()
                         // счета снова загрузить
-                        self.userService.getAccounts(uid: uid, success: {
-                            success()
-                        }) {
-                            failure()
-                        }
+//                        self.userService.getAccounts(uid: uid, success: {
+//                            success()
+//                        }) {
+//                            failure()
+//                        }
                     }
                     else {
                         failure()
@@ -126,11 +126,11 @@ class AccountService {
                     print("перевод выполнен!")
                     chosenAcc.balance = sum
                     // get users again
-                    self.userService.getAccounts(uid: currentUser.id, success: {
-                        success()
-                    }) {
-                        failure()
-                    }
+//                    self.userService.getAccounts(uid: currentUser.id, success: {
+//                        success()
+//                    }) {
+//                        failure()
+//                    }
                 }
                 else {
                     print(response.error)
@@ -161,11 +161,11 @@ class AccountService {
                         print("платеж совершен!")
                         chosenAcc.balance = chosenAcc.balance - sum
                         currentUserAccounts = [Account]()
-                        self.userService.getAccounts(uid: currentUser.id, success: {
-                            success()
-                        }) {
-                            failure()
-                        }
+//                        self.userService.getAccounts(uid: currentUser.id, success: {
+//                            success()
+//                        }) {
+//                            failure()
+//                        }
                     }
                     else {
                         print(status)

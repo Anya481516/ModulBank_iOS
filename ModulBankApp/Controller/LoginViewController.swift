@@ -55,8 +55,8 @@ class LoginViewController: UIViewController {
     //MARK:- METHODS:
     
     override func viewWillAppear(_ animated: Bool) {
-        emailTextField.text = ""
-        passwordTextField.text = ""
+        emailTextField.text = "dsas@gmail.com"
+        passwordTextField.text = "dsas"
         token = ""
         currentUser = User()
         chosenAcc = Account()

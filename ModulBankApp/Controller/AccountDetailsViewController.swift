@@ -21,7 +21,7 @@ class AccountDetailsController: UIViewController, DepositDelegate, TransferDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        accountNumberLabel.text = String(chosenAcc.number)
+        accountNumberLabel.text = String(chosenAcc.accNumber)
         accountBalanceLabel.text = "\(chosenAcc.balance) рублей"
         // Do any additional setup after loading the view.
     }

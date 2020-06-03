@@ -53,10 +53,10 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
         let historyItem = history[indexPath.row]
         cell.dateLabel.text = "\(historyItem.date) \(historyItem.time)"
         if history[indexPath.row].name == "Пополнение" {
-            cell.emailLabel.text = "\(historyItem.accountNumber)"
+            cell.emailLabel.text = "\(historyItem.accNumber)"
         }
         else {
-            cell.emailLabel.text = "С \(historyItem.accountNumber) \nНа \(history[indexPath.row].destination)"
+            cell.emailLabel.text = "С \(historyItem.accNumber) \nНа \(history[indexPath.row].destination)"
         }
         cell.sumLabel.text = "\(historyItem.sum) Р"
         cell.titleLabel.text = "\(historyItem.name)"
@@ -69,18 +69,18 @@ class InvoiceTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        history.removeAll()
-        userService.getHistory(uid: currentUser.id, success: { (newHistory) in
+        
+        userService.getHistory(uid: currentUserInfo.id, success: { (newHistory) in
             self.history = newHistory
             self.tableView.reloadData()
         }) {
             self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке истории", actionTitle: "Ок")
-        }
+            }
     }
     
     func reloadTableData(date1: String, date2: String){
        history.removeAll()
-        userService.getHistoryWithDates(uid: currentUser.id, date1: date1, date2: date2, success: { (newHistory) in
+        userService.getHistoryWithDates(uid: currentUserInfo.id, date1: date1, date2: date2, success: { (newHistory) in
            self.history = newHistory
            self.tableView.reloadData()
        }) {

@@ -38,7 +38,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     //MARK:- METHODS:
     
     @objc func refresh(_ sender: AnyObject) {
-        userService.getAccounts(uid: currentUser.id, success: {
+        userService.getAccounts(uid: currentUserInfo.id, success: { (accounts) in
+            currentUserAccounts = accounts
             self.tableView.reloadData()
         }) {
             self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
@@ -53,7 +54,7 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customAccountCell", for: indexPath) as! CustomAccountCell
         cell.balanceLabel.text = "\(currentUserAccounts[indexPath.row].balance) P"
-        cell.titleLabel.text = "\(currentUserAccounts[indexPath.row].number)"
+        cell.titleLabel.text = "\(currentUserAccounts[indexPath.row].accNumber)"
         return cell
     }
     
@@ -68,10 +69,17 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
        }
     
     override func viewWillAppear(_ animated: Bool) {
-        userService.getAccounts(uid: currentUser.id, success: {
+        userService.getAccounts(uid: currentUserInfo.id, success: { (accounts) in
+            currentUserAccounts = accounts
             self.tableView.reloadData()
         }) {
             self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
         }
+        
+//        userService.getAccounts(uid: currentUser.id, success: {
+//            self.tableView.reloadData()
+//        }) {
+//            self.showAlert(alertTitle: "Упс!", alertMessage: "Возникла ошибка при загрузке счетов", actionTitle: "Ок")
+//        }
     }
 }

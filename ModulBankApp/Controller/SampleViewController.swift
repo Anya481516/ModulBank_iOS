@@ -52,7 +52,7 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "customExampleCell", for: indexPath) as! CustomExampleCell
         cell.sumLabel.text = "\(samples[indexPath.row].sum) P"
         cell.titleLabel.text = "\(samples[indexPath.row].name)"
-        cell.emailLabel.text = "\(samples[indexPath.row].email)"
+        cell.emailLabel.text = "\(samples[indexPath.row].receivingEmail)"
         return cell
     }
     
@@ -69,7 +69,7 @@ class SampleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         samples.removeAll()
-        userService.getSamples(uid: currentUser.id, success: { (newSamples) in
+        userService.getSamples(uid: currentUserInfo.id, success: { (newSamples) in
             self.samples = newSamples
             self.tableView.reloadData()
         }) {

@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         usernameLabel.text = currentUserInfo.username
         emailLabel.text = currentUserInfo.email
         
-        userService.getTotalBalance(uid: currentUser.id, success: { (balance) in
+        userService.getTotalBalance(uid: currentUserInfo.id, success: { (balance) in
             self.currentTotalBalance = balance
             self.totalBalanceLabel.text = "\(self.currentTotalBalance) рублей"
         }) {

@@ -56,6 +56,8 @@
 		5DCCA6BE247F295A00A56E5B /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCA6BD247F295A00A56E5B /* AccountService.swift */; };
 		5DDA5CEC24786B1900D5D912 /* PickerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */; };
 		5DEF9B3F2487A9C1002C1884 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */; };
+		5DEF9B412487BC37002C1884 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF9B402487BC37002C1884 /* TokenInfo.swift */; };
+		5DEF9B432487BE8A002C1884 /* TotalBalanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF9B422487BE8A002C1884 /* TotalBalanceInfo.swift */; };
 		5DF6323B2481A7940043A2FD /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */; };
 		5DF6323D2481BF8D0043A2FD /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */; };
 		9A90187818E5628352A6F9A0 /* Pods_ModulBankApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79FF5B0507CFF65B755EDCE /* Pods_ModulBankApp.framework */; };
@@ -113,6 +115,8 @@
 		5DCCA6BD247F295A00A56E5B /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		5DDA5CEB24786B1900D5D912 /* PickerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDelegates.swift; sourceTree = "<group>"; };
 		5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		5DEF9B402487BC37002C1884 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
+		5DEF9B422487BE8A002C1884 /* TotalBalanceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalBalanceInfo.swift; sourceTree = "<group>"; };
 		5DF6323A2481A7940043A2FD /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		632A01C7326476F242F5A8A8 /* Pods-ModulBankApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModulBankApp.debug.xcconfig"; path = "Target Support Files/Pods-ModulBankApp/Pods-ModulBankApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				5DF6323C2481BF8D0043A2FD /* HistoryItem.swift */,
 				5DB91E19248426D400A58E54 /* SampleItem.swift */,
 				5DEF9B3E2487A9C1002C1884 /* UserInfo.swift */,
+				5DEF9B402487BC37002C1884 /* TokenInfo.swift */,
+				5DEF9B422487BE8A002C1884 /* TotalBalanceInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,12 +420,14 @@
 				5D301EEC247942F9004472CF /* DepositViewController.swift in Sources */,
 				5D301EF624794399004472CF /* SampleViewController.swift in Sources */,
 				5DC3F5972477D555003A4AF1 /* ViewController.swift in Sources */,
+				5DEF9B432487BE8A002C1884 /* TotalBalanceInfo.swift in Sources */,
 				5D301EF8247943F9004472CF /* CustomInvoiceCell.swift in Sources */,
 				5D301EFA24795468004472CF /* EditProfileViewController.swift in Sources */,
 				5DC3F5932477D555003A4AF1 /* AppDelegate.swift in Sources */,
 				5D301F062479760F004472CF /* CustomAccountCell.swift in Sources */,
 				5DB91E1A248426D400A58E54 /* SampleItem.swift in Sources */,
 				5DF6323D2481BF8D0043A2FD /* HistoryItem.swift in Sources */,
+				5DEF9B412487BC37002C1884 /* TokenInfo.swift in Sources */,
 				5DB91E182483EA0100A58E54 /* UIViewControllerExtension.swift in Sources */,
 				5DC3F5952477D555003A4AF1 /* SceneDelegate.swift in Sources */,
 				5DC3F5AD247806E5003A4AF1 /* User.swift in Sources */,
